@@ -5,12 +5,15 @@ mongoose.connect('mongodb://localhost/whats_good', { useNewUrlParser: true });
 
 var CommentSchema = new mongoose.Schema({
     user_id: {type: String, required: true},
+    username: {type: String, required: true},
     comment: {type: String, required: [true, "Comment Cannot Be Blank"]}
 }, { timestamps: true })
 
 var PostSchema = new mongoose.Schema({
     user_id: {type: String, required: true},
-    post: {type: String, required: [true, "Post Cannot Be Blank"]},
+    username: {type: String, required: true},
+    title: {type: String, required: [true, "Post Must Have Title"]},
+    content: {type: String, required: [true, "Post Cannot Be Blank"]},
     comments: [CommentSchema]
 }, { timestamps: true })
 

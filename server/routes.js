@@ -1,6 +1,7 @@
 var controller = require('./controller');
 
 module.exports = (app) => {
+    app.post('/api/login', controller.login);
     // USER ROUTES
     app.get('/api/users', controller.allUsers);
     app.post('/api/users', controller.addUser);

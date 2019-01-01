@@ -1,0 +1,15 @@
+<p>
+  login-register works!
+</p>
+
+<p class="errors" *ngIf="flash">{{ flash }}</p>
+
+<form (submit)="checkLogin()">
+  <!-- <p>{{ login_user | json }}</p> -->
+  <label for="email">Email:</label>
+  <input type="text" name="login_user.email" [(ngModel)]="login_user.email" id="email">
+  <label for="password">Password:</label>
+  <input type="text" name="login_user.password" [(ngModel)]="login_user.password" id="password">
+
+  <input type="submit" value="Login">
+</form>

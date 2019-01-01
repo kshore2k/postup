@@ -6,6 +6,36 @@ var bcrypt = require('bcryptjs');
 var path = require('path');
 
 module.exports = {
+    login: (req,res) => {
+        User.findOne({email: req.body.email}, (err,user) => {
+            if(err){
+                res.json(err)
+            }
+            else {
+                if(user != null){
+                    bcrypt.compare(req.body.password,user.password)
+                        .then(result => {
+                            if(result === true){
+                                req.session.user_id = user._id;
+                                req.session.username = user.username;
+                                res.json({msg: "Logged In User", info: user})
+                                console.log(req.session.username);
+                                console.log(req.session.user_id);
+                            }
+                            else {
+                                res.json({msg: "Invalid Password"})
+                            }
+                        })
+                        .catch(err => {
+                            res.json(err)
+                        })
+                }
+                else {
+                    res.json({msg: "User Not Found"})
+                }
+            }
+        })
+    },
     // USER CONTROLS
     allUsers: (req,res) => {
         User.find()
@@ -79,12 +109,12 @@ module.exports = {
             .catch((err)=>res.json(err))
     },
     addPost: (req,res) => {
-        Post.create({user_id: req.body.user_id, post: req.body.post}) //Change to Session User_id Later
+        Post.create({user_id: req.body.user_id, username: req.body.username, title: req.body.title, content: req.body.content}) //Change to Session User_id/name Later
             .then((data)=>res.json(data))
             .catch((err)=>res.json(err))
     },
     editPost: (req,res) => {
-        Post.findOneAndUpdate({_id: req.params.id}, {$set: {post: req.body.update_post}}, {runValidators: true, new: true})
+        Post.findOneAndUpdate({_id: req.params.id}, {$set: {content: req.body.update_content}}, {runValidators: true, new: true})
             .then((data)=>res.json(data))
             .catch((err)=>(err))
     },
@@ -95,7 +125,7 @@ module.exports = {
     },
     // COMMENT CONTROLS
     addComment: (req,res) => {
-        Post.findByIdAndUpdate({_id: req.params.id}, {$push: {comments: {user_id: req.body.user_id, comment: req.body.comment}}},  {runValidators: true, new: true}) //Change to Session User_id Later
+        Post.findByIdAndUpdate({_id: req.params.id}, {$push: {comments: {user_id: req.body.user_id, username: req.body.username, comment: req.body.comment}}},  {runValidators: true, new: true}) //Change to Session User_id Later
             .then((data)=>res.json(data))
             .catch((err)=>res.json(err))
     },
