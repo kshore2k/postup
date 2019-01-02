@@ -67,7 +67,7 @@ module.exports = {
     editUser: (req,res) => {
         bcrypt.hash(req.body.update_password, 10)
             .then(hashed_password => {
-                User.findOneAndUpdate({_id: req.params.id}, {$set: {email: req.body.update_email, password: hashed_password}}, {runValidators: true, context: 'query', new: true})
+                User.findOneAndUpdate({_id: req.params.id}, {$set: {password: hashed_password}}, {runValidators: true, context: 'query', new: true})
                     .then((data)=>res.json(data))
                     .catch((err)=>res.json(err))
             })

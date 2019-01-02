@@ -50,6 +50,10 @@ export class HttpService {
     return this._http.get('/api/users/'+id);
   }
 
+  getFriends(id){
+    return this._http.get('/api/users/'+id+'/friends');
+  }
+
   
 
 }

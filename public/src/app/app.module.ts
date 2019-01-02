@@ -3,10 +3,13 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
 
 import { HttpService } from './http.service';
 import { HttpClientModule } from '@angular/common/http';
+
+import { DataSharingService } from './data-sharing.service';
+
+import { AppComponent } from './app.component';
 import { AllPostsComponent } from './all-posts/all-posts.component';
 import { OnePostComponent } from './one-post/one-post.component';
 import { NewPostComponent } from './new-post/new-post.component';
@@ -34,7 +37,7 @@ import { LoginRegisterComponent } from './login-register/login-register.componen
     HttpClientModule,
     FormsModule
   ],
-  providers: [HttpService],
+  providers: [HttpService,DataSharingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

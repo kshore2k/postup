@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpService } from '../http.service';
 
 @Component({
   selector: 'app-friends',
@@ -6,10 +7,32 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./friends.component.css']
 })
 export class FriendsComponent implements OnInit {
+  userId: any;
+  friends: any;
 
-  constructor() { }
+  constructor(private _httpService: HttpService) { }
 
   ngOnInit() {
+    this.getAuth();
+  }
+
+  getAuth(){
+    let observable = this._httpService.authenticate();
+    observable.subscribe(data => {
+      console.log("Getting Authentication", data);
+      if(data['msg']==="True"){
+        this.userId = data['user_id'];
+        this.getFriendsFromService();
+      }
+    })
+  }
+
+  getFriendsFromService(){
+    let observable = this._httpService.getFriends(this.userId);
+    observable.subscribe(data => {
+      console.log("Fetched Friends", data);
+      this.friends = data['friends'];
+    })
   }
 
 }

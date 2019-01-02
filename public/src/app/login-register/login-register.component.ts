@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../http.service';
+import { DataSharingService } from '../data-sharing.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -13,7 +14,7 @@ export class LoginRegisterComponent implements OnInit {
   loginFlash: any;
   registerFlash: any;
 
-  constructor(private _httpService: HttpService, private _router: Router) { }
+  constructor(private _httpService: HttpService, private _dataSharingService: DataSharingService, private _router: Router) { }
 
   ngOnInit() {
     this.loginUser = {email: "", password: ""};
@@ -26,7 +27,8 @@ export class LoginRegisterComponent implements OnInit {
       console.log(data);
       this.loginUser = {email: "", password: ""};
       if(data['msg']==='Logged In User'){
-        this._router.navigate(['/']);
+        this._dataSharingService.isUserLoggedIn.next(true);
+        this._router.navigate(['/dashboard']);
       }
       else {
         this.loginFlash = data['msg'];
