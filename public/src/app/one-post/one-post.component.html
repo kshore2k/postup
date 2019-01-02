@@ -6,6 +6,9 @@
 <h4>{{ post.content }}</h4>
 <p>-Posted By {{ post.username }} on {{ post.createdAt | date:'short' }}</p>
 
+<!-- If Logged In User Created Post Allow For Delete -->
+<button (click)="deletePostFromService(post._id)" *ngIf="post.username == username ">Delete</button>
+
 <h3>Leave a Comment</h3>
 
 <span *ngFor="let comments of post.comments">
@@ -15,10 +18,6 @@
 
 <form (submit)="addComment(post._id)">
   <!-- <p>{{ newComment | json }}</p> -->
-  <label for="user_id">User Id:</label>
-  <input type="text" name="newComment.user_id" [(ngModel)]="newComment.user_id" id="user_id">
-  <label for="username">Username:</label>
-  <input type="text" name="newComment.username" [(ngModel)]="newComment.username" id="username">
   <label for="comment">Comment:</label>
   <input type="text" name="newComment.comment" [(ngModel)]="newComment.comment" id="comment">
 

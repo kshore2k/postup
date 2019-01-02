@@ -12,7 +12,7 @@ app.use(session({
     secret: 'secretcode',
     resave: false,
     saveUninitialized: true,
-    cookie: { maxAge: 60000 }
+    cookie: { maxAge: 600000 }
 }));
 
 app.use(flash());

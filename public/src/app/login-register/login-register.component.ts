@@ -8,29 +8,44 @@ import { Router } from '@angular/router';
   styleUrls: ['./login-register.component.css']
 })
 export class LoginRegisterComponent implements OnInit {
-  login_user: any;
-  flash: any;
+  loginUser: any;
+  newUser: any;
+  loginFlash: any;
+  registerFlash: any;
+
   constructor(private _httpService: HttpService, private _router: Router) { }
 
   ngOnInit() {
-    this.login_user = {email: "", password: ""};
+    this.loginUser = {email: "", password: ""};
+    this.newUser = {first_name: "", last_name: "", email: "", username: "", password: ""};
   }
 
   checkLogin(){
-    let observable = this._httpService.login(this.login_user);
+    let observable = this._httpService.login(this.loginUser);
     observable.subscribe(data => {
       console.log(data);
-      this.login_user = {email: "", password: ""};
+      this.loginUser = {email: "", password: ""};
       if(data['msg']==='Logged In User'){
-        this._httpService.loggedIn_username = data['info']['username'];
-        this._httpService.loggedIn_user_id = data['info']['_id'];
-        console.log('Loggin in User: ', this._httpService.loggedIn_username);
-        console.log('Loggin in User ID: ', this._httpService.loggedIn_user_id);
-        this._router.navigate(['/dashboard']);
+        this._router.navigate(['/']);
       }
       else {
-        this.flash = data['msg'];
-        console.log(this.flash);
+        this.loginFlash = data['msg'];
+        console.log(this.loginFlash);
+      }
+    })
+  }
+
+  // VALIDATIONS NEEDS WORK ***
+  registerUser(){
+    let observable = this._httpService.createUser(this.newUser);
+    observable.subscribe(data => {
+      console.log("Created One User", data);
+      if(data['errors']){
+        console.log(data['errors']);
+        this.registerFlash = data['errors'];
+      }
+      else {
+        this._router.navigate(['/dashboard']);
       }
     })
   }

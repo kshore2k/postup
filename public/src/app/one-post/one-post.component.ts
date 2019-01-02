@@ -10,12 +10,14 @@ export class OnePostComponent implements OnInit {
   post_id: any;
   post: any;
   newComment: any;
+  username: any;
 
-  constructor(private _httpService: HttpService, private _route: ActivatedRoute) { }
+  constructor(private _httpService: HttpService, private _route: ActivatedRoute, private _router: Router) { }
 
   ngOnInit() {
     this.onePostFromService();
-    this.newComment = {user_id: "", username: "", comment: ""};
+    this.getAuth();
+    this.newComment = {comment: ""};
   }
 
   onePostFromService(){
@@ -35,7 +37,26 @@ export class OnePostComponent implements OnInit {
     observable.subscribe(data => {
       console.log(`Comment Added To Post id: ${this.post_id}`);
       this.onePostFromService();
-      this.newComment = {user_id: "", username: "", comment: ""};
+      this.newComment = {comment: ""};
+    })
+  }
+
+  deletePostFromService(id){
+    let observable = this._httpService.deletePost(id);
+    observable.subscribe(data => {
+      console.log("Deleted One Post");
+      this._router.navigate(['/dashboard']);
+
+    })
+  }
+
+  getAuth(){
+    let observable = this._httpService.authenticate();
+    observable.subscribe(data => {
+      console.log("Getting Authentication", data);
+      if(data['msg']==="True"){
+        this.username = data['username'];
+      }
     })
   }
 

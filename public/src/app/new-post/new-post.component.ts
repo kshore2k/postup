@@ -9,11 +9,23 @@ import { Router } from '@angular/router';
 export class NewPostComponent implements OnInit {
   newPost: any;
   newPost_id: any;
+  username: any;
 
   constructor(private _httpService: HttpService, private _router: Router) { }
 
   ngOnInit() {
-    this.newPost = {user_id: "", username: "", title: "", content: ""};
+    this.getAuth();
+    this.newPost = {title: "", content: ""};
+  }
+
+  getAuth(){
+    let observable = this._httpService.authenticate();
+    observable.subscribe(data => {
+      console.log("Getting Authentication", data);
+      if(data['msg']==="True"){
+        this.username = data['username'];
+      }
+    })
   }
 
   addPost(){

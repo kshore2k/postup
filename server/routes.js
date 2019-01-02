@@ -1,7 +1,10 @@
 var controller = require('./controller');
 
 module.exports = (app) => {
+    // AUTHENTICATION ROUTES
     app.post('/api/login', controller.login);
+    app.get('/api/logout', controller.logout);
+    app.get('/api/auth', controller.auth);
     // USER ROUTES
     app.get('/api/users', controller.allUsers);
     app.post('/api/users', controller.addUser);

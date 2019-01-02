@@ -6,12 +6,10 @@ var bcrypt = require('bcryptjs');
 var path = require('path');
 
 module.exports = {
+    // AUTHENTICATION CONTROLS
     login: (req,res) => {
-        User.findOne({email: req.body.email}, (err,user) => {
-            if(err){
-                res.json(err)
-            }
-            else {
+        User.findOne({email: req.body.email})
+            .then((user) => {
                 if(user != null){
                     bcrypt.compare(req.body.password,user.password)
                         .then(result => {
@@ -19,22 +17,27 @@ module.exports = {
                                 req.session.user_id = user._id;
                                 req.session.username = user.username;
                                 res.json({msg: "Logged In User", info: user})
-                                console.log(req.session.username);
-                                console.log(req.session.user_id);
                             }
                             else {
                                 res.json({msg: "Invalid Password"})
                             }
                         })
-                        .catch(err => {
-                            res.json(err)
-                        })
                 }
                 else {
                     res.json({msg: "User Not Found"})
                 }
-            }
-        })
+            })
+    },
+    logout: (req,res) => {
+        req.session.destroy();
+    },
+    auth: (req,res) => {
+        if(req.session.user_id){
+            res.json({msg: "True", user_id: req.session.user_id, username: req.session.username})
+        }
+        else {
+            res.json({msg: "False"})
+        }
     },
     // USER CONTROLS
     allUsers: (req,res) => {
@@ -47,7 +50,9 @@ module.exports = {
             .then(hashed_password => {
                 User.create({first_name: req.body.first_name, last_name: req.body.last_name, email: req.body.email, username: req.body.username, password: hashed_password})
                     .then((data) => {
-                        Friends_List.create({user_id: data._id}) // CREATE FRIENDS LIST W/ NEW USER ID
+                        req.session.user_id = data._id; // save user in session
+                        req.session.username = data.username;
+                        Friends_List.create({user_id: data._id}) // create friends list w user_id
                         res.json(data)
                     })
                     .catch((err)=>res.json(err))
@@ -69,9 +74,9 @@ module.exports = {
             .catch((err)=>res.json(err))
     },
     destroyUser: (req,res) => {
-        Friends_List.deleteOne({user_id: req.params.id}) // DELETE FRIENDS LIST
+        Friends_List.deleteOne({user_id: req.params.id}) // delete friends list of user
             .then(() => {
-                User.deleteOne({_id: req.params.id}) // THEN DELETE USER
+                User.deleteOne({_id: req.params.id}) // then delete user
                     .then((data)=>res.json(data))
                     .catch((err)=>res.json(err))
             })
@@ -109,7 +114,7 @@ module.exports = {
             .catch((err)=>res.json(err))
     },
     addPost: (req,res) => {
-        Post.create({user_id: req.body.user_id, username: req.body.username, title: req.body.title, content: req.body.content}) //Change to Session User_id/name Later
+        Post.create({user_id: req.session.user_id, username: req.session.username, title: req.body.title, content: req.body.content}) //Changed to Session User_id/name
             .then((data)=>res.json(data))
             .catch((err)=>res.json(err))
     },
@@ -125,7 +130,7 @@ module.exports = {
     },
     // COMMENT CONTROLS
     addComment: (req,res) => {
-        Post.findByIdAndUpdate({_id: req.params.id}, {$push: {comments: {user_id: req.body.user_id, username: req.body.username, comment: req.body.comment}}},  {runValidators: true, new: true}) //Change to Session User_id Later
+        Post.findByIdAndUpdate({_id: req.params.id}, {$push: {comments: {user_id: req.session.user_id, username: req.session.username, comment: req.body.comment}}},  {runValidators: true, new: true}) //Changed to Session User_id/name
             .then((data)=>res.json(data))
             .catch((err)=>res.json(err))
     },

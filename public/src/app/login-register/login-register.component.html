@@ -2,14 +2,32 @@
   login-register works!
 </p>
 
-<p class="errors" *ngIf="flash">{{ flash }}</p>
+<p class="errors" *ngIf="loginFlash">{{ loginFlash }}</p>
 
 <form (submit)="checkLogin()">
   <!-- <p>{{ login_user | json }}</p> -->
   <label for="email">Email:</label>
-  <input type="text" name="login_user.email" [(ngModel)]="login_user.email" id="email">
+  <input type="text" name="loginUser.email" [(ngModel)]="loginUser.email" id="email">
   <label for="password">Password:</label>
-  <input type="text" name="login_user.password" [(ngModel)]="login_user.password" id="password">
+  <input type="text" name="loginUser.password" [(ngModel)]="loginUser.password" id="password">
 
   <input type="submit" value="Login">
+</form>
+
+<p class="errors" *ngIf="registerFlash">All Fields Required</p>
+
+<form (submit)="registerUser()">
+  <!-- {{ newUser | json }} -->
+  <label for="first_name">First Name:</label>
+  <input type="text" name="newUser.first_name" [(ngModel)]="newUser.first_name" id="first_name">
+  <label for="last_name">Last Name:</label>
+  <input type="text" name="newUser.last_name" [(ngModel)]="newUser.last_name" id="last_name">
+  <label for="email">Email:</label>
+  <input type="email" name="newUser.email" [(ngModel)]="newUser.email" id="email">
+  <label for="username">Username:</label>
+  <input type="text" name="newUser.username" [(ngModel)]="newUser.username" id="username">
+  <label for="password">Password:</label>
+  <input type="text" name="newUser.password" [(ngModel)]="newUser.password" id="password">
+
+  <input type="submit" value="Register">
 </form>

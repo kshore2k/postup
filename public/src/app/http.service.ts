@@ -5,11 +5,10 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class HttpService {
-  loggedIn_username: any;
-  loggedIn_user_id: any;
-  
+
   constructor(private _http: HttpClient) { }
 
+  // POSTS
   getAllPosts(){
     return this._http.get('/api/posts');
   }
@@ -23,11 +22,34 @@ export class HttpService {
   }
 
   addCommentToPost(id,newComment){
-    return this._http.put('api/posts/'+id+'/comment', newComment);
+    return this._http.put('/api/posts/'+id+'/comment', newComment);
   }
 
+  deletePost(id){
+    return this._http.delete('/api/posts/'+id);
+  }
+  // AUTHENTICATION
   login(login_user){
     return this._http.post('/api/login', login_user);
   }
+
+  logout(){
+    return this._http.get('/api/logout');
+  }
+
+  authenticate(){
+    return this._http.get('api/auth');
+  }
+ 
+  // USERS
+  createUser(newUser){
+    return this._http.post('/api/users', newUser);
+  }
+
+  getOneUser(id){
+    return this._http.get('/api/users/'+id);
+  }
+
+  
 
 }
