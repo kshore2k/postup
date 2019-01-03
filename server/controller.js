@@ -17,6 +17,7 @@ module.exports = {
                             if(result === true){
                                 req.session.user_id = user._id;
                                 req.session.username = user.username;
+                                req.session.email = user.email;
                                 res.json({msg: "Logged In User", info: user})
                             }
                             else {
@@ -77,9 +78,9 @@ module.exports = {
         });
         
         var mailOptions = {
-            from: 'kshore2k18@gmail.com',
-            to: 'kshore2k18@gmail.com',
-            subject: 'Request Password Reset',
+            from: '****@gmail.com', // *Admin Email
+            to: req.session.email,
+            subject: 'Password Reset Request',
             html: '<a href="http://localhost:8000/profile/'+req.params.id+'/edit">Click Here To Change Password</a>'
         };
         

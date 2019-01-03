@@ -62,6 +62,11 @@ export class HttpService {
     return this._http.put('/api/users/'+id, newPassword);
   }
 
+  // NEWSFEED
+  getNews(){
+    return this._http.get('https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=84a2560fcff14846a83c31297697500e')
+  }
+
   
 
 }
