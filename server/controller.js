@@ -3,6 +3,7 @@ var Post = require('./models').Post;
 var Friends_List = require('./models').Friend;
 
 var bcrypt = require('bcryptjs');
+var nodemailer = require('nodemailer');
 var path = require('path');
 
 module.exports = {
@@ -30,6 +31,7 @@ module.exports = {
     },
     logout: (req,res) => {
         req.session.destroy();
+        res.json({msg: "Logout Successful"})
     },
     auth: (req,res) => {
         if(req.session.user_id){
@@ -64,8 +66,36 @@ module.exports = {
             .then((data)=>res.json(data))
             .catch((err)=>res.json(err))
     },
+    // SEND NEW-PASSWORD EMAIL
+    email: (req,res) => {
+        var transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+                user: '****@gmail.com', // *Admin Email
+                pass: '****' // *Admin Pass
+            }
+        });
+        
+        var mailOptions = {
+            from: 'kshore2k18@gmail.com',
+            to: 'kshore2k18@gmail.com',
+            subject: 'Request Password Reset',
+            html: '<a href="http://localhost:8000/profile/'+req.params.id+'/edit">Click Here To Change Password</a>'
+        };
+        
+        transporter.sendMail(mailOptions, function(error, info){
+            if(error){
+                console.log(error);
+            }
+            else {
+                console.log('Email sent: ' + info.response);
+            }
+        });;
+
+        res.json({msg: "Password Change Email Sent"})
+    },
     editUser: (req,res) => {
-        bcrypt.hash(req.body.update_password, 10)
+        bcrypt.hash(req.body.new_password, 10)
             .then(hashed_password => {
                 User.findOneAndUpdate({_id: req.params.id}, {$set: {password: hashed_password}}, {runValidators: true, context: 'query', new: true})
                     .then((data)=>res.json(data))

@@ -5,6 +5,7 @@ import { AllPostsComponent } from './all-posts/all-posts.component';
 import { NewPostComponent } from './new-post/new-post.component';
 import { OnePostComponent } from './one-post/one-post.component';
 import { ProfileComponent } from './profile/profile.component';
+import { EditPasswordComponent } from './edit-password/edit-password.component';
 import { FriendsComponent } from './friends/friends.component';
 import { NewsComponent } from './news/news.component';
 import { LoginRegisterComponent } from './login-register/login-register.component';
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'post', component: NewPostComponent },
   { path: 'post/:id', component: OnePostComponent },
   { path: 'profile', component: ProfileComponent },
+  { path: 'profile/:id/edit', component: EditPasswordComponent },
   { path: 'friends', component: FriendsComponent },
   { path: 'news', component: NewsComponent },
   { path: 'login', component: LoginRegisterComponent},

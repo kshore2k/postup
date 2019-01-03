@@ -16,6 +16,7 @@
     "express-flash": "0.0.2",
     "express-session": "^1.15.6",
     "mongoose": "^5.4.1",
-    "mongoose-unique-validator": "^2.0.2"
+    "mongoose-unique-validator": "^2.0.2",
+    "nodemailer": "^5.0.0"
   }
 }

@@ -54,6 +54,14 @@ export class HttpService {
     return this._http.get('/api/users/'+id+'/friends');
   }
 
+  requestPasswordChange(id){
+    return this._http.get('/api/users/'+id+'/email');
+  }
+
+  changePassword(id,newPassword){
+    return this._http.put('/api/users/'+id, newPassword);
+  }
+
   
 
 }

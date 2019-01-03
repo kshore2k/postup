@@ -6,7 +6,7 @@
   <h4>Full Name: {{ user.first_name }} {{ user.last_name }}</h4>
   <h4>Email: {{ user.email }}</h4>
   <h4>Username: {{ user.username }}</h4>
-
+  
   <!-- SETUP EMAIL VERIFICATI0N *** -->
-  <button>Change Password</button>
+  <button (click)="editPasswordRequest(user._id)">Change Password</button>
 </div>

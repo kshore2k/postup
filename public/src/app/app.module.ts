@@ -18,6 +18,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { FriendsComponent } from './friends/friends.component';
 import { NewsComponent } from './news/news.component';
 import { LoginRegisterComponent } from './login-register/login-register.component';
+import { EditPasswordComponent } from './edit-password/edit-password.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { LoginRegisterComponent } from './login-register/login-register.componen
     ProfileComponent,
     FriendsComponent,
     NewsComponent,
-    LoginRegisterComponent
+    LoginRegisterComponent,
+    EditPasswordComponent
   ],
   imports: [
     BrowserModule,

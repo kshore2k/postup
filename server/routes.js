@@ -9,6 +9,7 @@ module.exports = (app) => {
     app.get('/api/users', controller.allUsers);
     app.post('/api/users', controller.addUser);
     app.get('/api/users/:id', controller.oneUser);
+    app.get('/api/users/:id/email', controller.email);
     app.put('/api/users/:id', controller.editUser);
     app.delete('/api/users/:id', controller.destroyUser);
     // USER / FRIEND ROUTES
