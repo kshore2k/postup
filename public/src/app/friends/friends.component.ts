@@ -35,4 +35,12 @@ export class FriendsComponent implements OnInit {
     })
   }
 
+  removeFromFriendsList(friendId){
+    let observable = this._httpService.removeFriend(this.userId,friendId);
+    observable.subscribe(data => {
+      console.log("Friend Removed", data);
+      this.getAuth();
+    })
+  }
+
 }

@@ -19,6 +19,7 @@ import { FriendsComponent } from './friends/friends.component';
 import { NewsComponent } from './news/news.component';
 import { LoginRegisterComponent } from './login-register/login-register.component';
 import { EditPasswordComponent } from './edit-password/edit-password.component';
+import { FriendsProfileComponent } from './friends-profile/friends-profile.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { EditPasswordComponent } from './edit-password/edit-password.component';
     FriendsComponent,
     NewsComponent,
     LoginRegisterComponent,
-    EditPasswordComponent
+    EditPasswordComponent,
+    FriendsProfileComponent
   ],
   imports: [
     BrowserModule,

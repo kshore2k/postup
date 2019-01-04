@@ -10,7 +10,7 @@
   </thead>
   <tr *ngFor="let post of posts">
     <td><a [routerLink]="['/post', post._id ]">{{ post.title }}</a></td>
-    <td>{{ post.username }}</td>
+    <td><a [routerLink]="['/friends/',post.user_id]">{{ post.username }}</a></td>
     <td>{{ post.createdAt | date:'short' }}</td>
   </tr>
 </table>

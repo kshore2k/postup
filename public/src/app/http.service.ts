@@ -54,6 +54,14 @@ export class HttpService {
     return this._http.get('/api/users/'+id+'/friends');
   }
 
+  addFriend(userId,friendId){
+    return this._http.put('/api/users/'+userId+'/friends/'+friendId, null);
+  }
+
+  removeFriend(userId,friendId){
+    return this._http.patch('/api/users/'+userId+'/friends/'+friendId, null);
+  }
+
   requestPasswordChange(id){
     return this._http.get('/api/users/'+id+'/email');
   }
@@ -62,7 +70,7 @@ export class HttpService {
     return this._http.put('/api/users/'+id, newPassword);
   }
 
-  // NEWSFEED
+  // NEWS
   getNews(){
     return this._http.get('https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=84a2560fcff14846a83c31297697500e')
   }
