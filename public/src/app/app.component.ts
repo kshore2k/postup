@@ -2,6 +2,7 @@ import { Component,OnInit } from '@angular/core';
 import { HttpService } from './http.service';
 import { DataSharingService } from './data-sharing.service';
 import { Router } from '@angular/router';
+import { ChatService } from './chat.service';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +13,7 @@ export class AppComponent implements OnInit{
   username: any;
   isUserLoggedIn: boolean;
 
-  constructor(private _httpService: HttpService, private _dataSharingService: DataSharingService, private _router: Router){
+  constructor(private _httpService: HttpService, private _dataSharingService: DataSharingService, private _router: Router, private _chatService: ChatService){
     this._dataSharingService.isUserLoggedIn.subscribe( value => {
       this.isUserLoggedIn = value;
     })
@@ -20,6 +21,13 @@ export class AppComponent implements OnInit{
 
   ngOnInit(){
     this.getAuth();
+    this._chatService.messages.subscribe(msg => { // Socket Test
+      console.log(msg);
+    })
+  }
+
+  sendMessage(){
+    this._chatService.sendMsg("Test Message"); // Socket Test Function
   }
 
   getAuth(){

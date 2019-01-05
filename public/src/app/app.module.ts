@@ -8,6 +8,8 @@ import { HttpService } from './http.service';
 import { HttpClientModule } from '@angular/common/http';
 
 import { DataSharingService } from './data-sharing.service';
+import { ChatService } from './chat.service';
+import { WebsocketService } from './websocket.service';
 
 import { AppComponent } from './app.component';
 import { AllPostsComponent } from './all-posts/all-posts.component';
@@ -41,7 +43,7 @@ import { FriendsProfileComponent } from './friends-profile/friends-profile.compo
     HttpClientModule,
     FormsModule
   ],
-  providers: [HttpService,DataSharingService],
+  providers: [HttpService,DataSharingService,ChatService,WebsocketService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
