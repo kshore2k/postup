@@ -3,10 +3,10 @@
 </p>
 
 <div *ngIf="friend">
-  <h4>{{ friend.username }}</h4>
-  <h4>{{ friend.email }}</h4>
+  <h4>Username: {{ friend.username }}</h4>
+  <h4>Email: {{ friend.email }}</h4>
 
-  <button *ngIf="!friendAdded" (click)="addToFriendsList()">Add Friend</button>
+  <button *ngIf="isUserLoggedIn && !friendAdded" (click)="addToFriendsList()">Add Friend</button>
 
   <h3 *ngIf="friendAdded">{{ friend.username }} {{ msg }}</h3>
 </div>

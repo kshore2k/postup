@@ -27,7 +27,8 @@ export class LoginRegisterComponent implements OnInit {
       console.log(data);
       this.loginUser = {email: "", password: ""};
       if(data['msg']==='Logged In User'){
-        this._dataSharingService.isUserLoggedIn.next(true);
+        this._dataSharingService.loggedInUser.next(data['info']); // Sets User info in DataSharingService to Current User
+        this._dataSharingService.isUserLoggedIn.next(true); // Sets Login Boolean in DataSharingService to true
         this._router.navigate(['/dashboard']);
       }
       else {
@@ -47,6 +48,8 @@ export class LoginRegisterComponent implements OnInit {
         this.registerFlash = data['errors'];
       }
       else {
+        this._dataSharingService.loggedInUser.next(data);
+        this._dataSharingService.isUserLoggedIn.next(true);
         this._router.navigate(['/dashboard']);
       }
     })

@@ -5,12 +5,12 @@
 <h2>Create New Post</h2>
 
 <!-- REDIRECT TO LOGIN/REGISTRATION IF NOT LOGGED IN USER -->
-<div *ngIf="!username">
+<div *ngIf="!isUserLoggedIn">
   <h4>Please <a [routerLink]="['/login']">Login</a> or <a [routerLink]="['/login']">Register</a> to create a New Topic.</h4>
 </div>
 
 <!-- IF LOGGED IN SHOW NEW TOPIC FORM -->
-<div *ngIf="username">
+<div *ngIf="isUserLoggedIn">
   <form (submit)="addPost()">
     <!-- <p>{{ newPost | json }}</p> -->
     <label for="title">Title:</label>

@@ -2,26 +2,31 @@
   one-post works!
 </p>
 
-<h2>{{ post.title }}</h2>
-<h4>{{ post.content }}</h4>
-<p>-Posted By {{ post.username }} on {{ post.createdAt | date:'short' }}</p>
+<div *ngIf="post">
+  <h2>{{ post.title }}</h2>
+  <h4>{{ post.content }}</h4>
+  <p>-Posted By {{ post.username }} on {{ post.createdAt | date:'short' }}</p>
 
-<!-- If Logged In User Created Post Allow For Delete -->
-<button (click)="deletePostFromService(post._id)" *ngIf="post.username == username ">Delete</button>
+  <!-- If Logged In User Created Post Allow For Delete -->
+  <button (click)="deletePostFromService(post._id)" *ngIf="post.username === user.username ">Delete</button>
 
-<h3>Leave a Comment</h3>
+  <h3>Comments:</h3>
 
-<span *ngFor="let comments of post.comments">
-  <h5>{{ comments.comment }}</h5>
-  <p>-{{ comments.username }}</p>
-</span>
+  <span *ngFor="let comments of post.comments">
+    <h5>{{ comments.comment }}</h5>
+    <p>-{{ comments.username }}</p>
+  </span>
 
-<form (submit)="addComment(post._id)">
-  <!-- <p>{{ newComment | json }}</p> -->
-  <label for="comment">Comment:</label>
-  <input type="text" name="newComment.comment" [(ngModel)]="newComment.comment" id="comment">
+  <div *ngIf="isUserLoggedIn">
+      <h3>Leave a Comment</h3>
+      
+      <form (submit)="addComment(post._id)">
+        <!-- <p>{{ newComment | json }}</p> -->
+        <label for="comment">Comment:</label>
+        <input type="text" name="newComment.comment" [(ngModel)]="newComment.comment" id="comment">
 
-  <input type="submit">
-</form>
-
+        <input type="submit">
+      </form>
+  </div>
+</div>
 

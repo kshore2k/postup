@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../http.service';
+import { DataSharingService } from '../data-sharing.service';
 
 @Component({
   selector: 'app-all-posts',
@@ -8,13 +9,17 @@ import { HttpService } from '../http.service';
 })
 export class AllPostsComponent implements OnInit {
   posts: any;
-  username: any;
+  user: any;
 
-  constructor(private _httpService: HttpService) { }
+  constructor(private _httpService: HttpService, private _dataSharingService: DataSharingService) { 
+    this._dataSharingService.loggedInUser.subscribe( value => {  // Subscribe to User Data Saved in DataSharingService
+      this.user = value;
+    })
+  }
 
   ngOnInit() {
     this.allPostsFromService();
-    this.getAuth();
+    // this.getAuth();
   }
 
   allPostsFromService(){
@@ -25,14 +30,14 @@ export class AllPostsComponent implements OnInit {
     })
   }
 
-  getAuth(){
-    let observable = this._httpService.authenticate();
-    observable.subscribe(data => {
-      console.log("Getting Authentication", data);
-      if(data['msg']==="True"){
-        this.username = data['username'];
-      }
-    })
-  }
+  // getAuth(){
+  //   let observable = this._httpService.authenticate();
+  //   observable.subscribe(data => {
+  //     console.log("Getting Authentication", data);
+  //     if(data['msg']==="True"){
+  //       this.username = data['username'];
+  //     }
+  //   })
+  // }
 
 }

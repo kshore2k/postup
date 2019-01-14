@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../http.service';
 import { Router } from '@angular/router';
+import { DataSharingService } from '../data-sharing.service';
 @Component({
   selector: 'app-new-post',
   templateUrl: './new-post.component.html',
@@ -9,24 +10,29 @@ import { Router } from '@angular/router';
 export class NewPostComponent implements OnInit {
   newPost: any;
   newPost_id: any;
-  username: any;
+  // username: any;
+  isUserLoggedIn: boolean;
 
-  constructor(private _httpService: HttpService, private _router: Router) { }
+  constructor(private _httpService: HttpService, private _router: Router, private _dataSharingService: DataSharingService) {
+    this._dataSharingService.isUserLoggedIn.subscribe( value => { // Subscribe to Login Boolean in DataSharingService
+      this.isUserLoggedIn = value;
+    })
+  }
 
   ngOnInit() {
-    this.getAuth();
+    // this.getAuth();
     this.newPost = {title: "", content: ""};
   }
 
-  getAuth(){
-    let observable = this._httpService.authenticate();
-    observable.subscribe(data => {
-      console.log("Getting Authentication", data);
-      if(data['msg']==="True"){
-        this.username = data['username'];
-      }
-    })
-  }
+  // getAuth(){
+  //   let observable = this._httpService.authenticate();
+  //   observable.subscribe(data => {
+  //     console.log("Getting Authentication", data);
+  //     if(data['msg']==="True"){
+  //       this.username = data['username'];
+  //     }
+  //   })
+  // }
 
   addPost(){
     let observable = this._httpService.createPost(this.newPost);

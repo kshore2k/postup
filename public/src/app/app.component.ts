@@ -10,34 +10,21 @@ import { ChatService } from './chat.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit{
-  username: any;
   isUserLoggedIn: boolean;
-
+  user: any;
+  
   constructor(private _httpService: HttpService, private _dataSharingService: DataSharingService, private _router: Router, private _chatService: ChatService){
-    this._dataSharingService.isUserLoggedIn.subscribe( value => {
+    this._dataSharingService.isUserLoggedIn.subscribe( value => { // Subscribe to Login Boolean in DataSharingService
       this.isUserLoggedIn = value;
     })
+    
+    this._dataSharingService.loggedInUser.subscribe( value => {  // Subscribe to User Data Saved in DataSharingService
+      this.user = value;
+    })
+    
   }
 
   ngOnInit(){
-    this.getAuth();
-    this._chatService.messages.subscribe(msg => { // Socket Test
-      console.log(msg);
-    })
-  }
-
-  sendMessage(){
-    this._chatService.sendMsg("Test Message"); // Socket Test Function
-  }
-
-  getAuth(){
-    let observable = this._httpService.authenticate();
-    observable.subscribe(data => {
-      console.log("Getting Authentication", data);
-      if(data['msg']==="True"){
-        this.username = data['username'];
-      }
-    })
   }
 
   logoutUser(){

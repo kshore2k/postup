@@ -2,4 +2,20 @@
   friends works!
 </p>
 
-<h4 *ngFor="let friend of friends">{{ friend.username }} {{ friend.email }} <button (click)="removeFromFriendsList(friend._id)">Remove Friend</button></h4>
+<h4 *ngFor="let friend of friends">{{ friend.username }} {{ friend.email }} 
+  <button (click)="startChat()">Chat</button>
+  <button [routerLink]="['/friends/',friend._id]">View Profile</button>
+  <button (click)="removeFromFriendsList(friend._id)">Remove Friend</button>
+</h4>
+
+<div class="chat_container" *ngIf="chat == true">
+  <div class="chatbox">
+    <p *ngFor="let message of chatLog">{{ message }}</p>
+  </div>
+
+  <form (submit)="sendMessage()">
+    <input type="text" name="newMessage.content" [(ngModel)]="newMessage.content">
+    <input type="submit" value="Send">
+    <button (click)="endChat()">End Chat</button>
+  </form>
+</div>
