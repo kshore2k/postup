@@ -1,11 +1,54 @@
-<h1>Welcome to What's Good!</h1>
+    <header>
+        <img id="logo" src="/assets/img/postup_logo2.png" alt="postUpLogo">
+        <img id="title" src="/assets/img/postup_title.png" alt="postUpTitle">
 
-<a class="nav" [routerLink]="['/dashboard']">Home</a>
-<a class="nav" [routerLink]="['/post']">New Post</a>
-<a class="nav" [routerLink]="['/profile']">Profile</a>
-<a class="nav" [routerLink]="['/friends']">Friends</a>
-<a class="nav" [routerLink]="['/news']">News</a>
-<a *ngIf="!isUserLoggedIn" class="nav" [routerLink]="['/login']">Login/Register</a>
-<a *ngIf="isUserLoggedIn" class="nav" href="" (click)="logoutUser()">Logout</a>
+        <!-- <a class="nav" [routerLink]="['/dashboard']">Home</a>
+        <a class="nav" [routerLink]="['/post']">New Post</a>
+        <a class="nav" [routerLink]="['/profile']">Profile</a>
+        <a class="nav" [routerLink]="['/friends']">Friends</a>
+        <a class="nav" [routerLink]="['/news']">News</a>
+        <a *ngIf="!isUserLoggedIn" class="nav" [routerLink]="['/login']">Login/Register</a>
+        <a *ngIf="isUserLoggedIn" class="nav" href="" (click)="logoutUser()">Logout</a> -->
+
+        <a class="nav_home" [routerLink]="['/dashboard']">
+            <div class="nav_btn">
+                <p>Home</p>
+            </div>
+        </a>
+        <a class="nav_post" [routerLink]="['/post']">
+            <div class="nav_btn">
+                <p>New Post</p>
+            </div>
+        </a>
+        <a class="nav_profile" [routerLink]="['/profile']">
+            <div class="nav_btn">
+                <p>Profile</p>
+            </div>
+        </a>
+        <a class="nav_friends" [routerLink]="['/friends']">
+            <div class="nav_btn">
+                <p>Friends</p>
+            </div>
+        </a>
+        <a class="nav_news" [routerLink]="['/news']">
+            <div class="nav_btn">
+                <p>News</p>
+            </div>
+        </a>
+
+        <a class="nav_login" *ngIf="!isUserLoggedIn" [routerLink]="['/login']">
+            <div class="nav_btn">
+                <img id="login_icon" src="/assets/img/user_icon_dark.png" alt="user">
+                <p class="log">Login/Register</p>
+            </div>
+        </a>
+        <a class="nav_logout" *ngIf="isUserLoggedIn" href="" (click)="logoutUser()">
+            <div class="nav_btn">
+                <img id="login_icon" src="/assets/img/user_icon_dark.png" alt="user">
+                <p class="log">Logout</p>
+            </div>
+        </a>
+    </header>
 
 <router-outlet></router-outlet>
+
