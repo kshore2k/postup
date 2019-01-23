@@ -1,16 +1,29 @@
-<p *ngIf="user.username">
-  {{ user.username }} signed in
-</p>
+<div class="main_container">
 
-<table>
-  <thead>
-    <th>Title</th>
-    <th>Posted By</th>
-    <th>Date</th>
-  </thead>
-  <tr *ngFor="let post of posts">
-    <td><a [routerLink]="['/post', post._id ]">{{ post.title }}</a></td>
-    <td><a [routerLink]="['/friends/',post.user_id]">{{ post.username }}</a></td>
-    <td>{{ post.createdAt | date:'short' }}</td>
-  </tr>
-</table>
+  <img id="banner" src="/assets/img/postup_banner.jpg" alt="postUp_banner">
+
+  <div class="forum_container">
+
+    <p *ngIf="user.username">
+      {{ user.username }} signed in
+    </p>
+
+    <div class="forum_header">
+      <h1>Topic</h1>
+      <div id="author_date">
+        <h2>Author</h2>
+        <h2>Date</h2>
+      </div>
+    </div>
+
+    <table class="post_row" *ngFor="let post of posts">
+      <tr>
+        <td id="topic"><a [routerLink]="['/post', post._id ]">{{ post.title }}</a></td>
+        <td id="author"><a [routerLink]="['/friends/',post.user_id]">{{ post.username }}</a></td>
+        <td id="date"><a>{{ post.createdAt | date:'short' }}</a></td>
+      </tr>
+    </table>
+
+  </div>
+
+</div>

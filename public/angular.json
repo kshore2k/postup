@@ -26,7 +26,8 @@
             ],
             "scripts": [
               "../node_modules/jquery/dist/jquery.min.js",
-              "../node_modules/jquery-ui/jquery-ui.js"]
+              "../node_modules/jquery-ui/jquery-ui.js",
+              "src/assets/jquery/app_component.js"]
           },
           "configurations": {
             "production": {

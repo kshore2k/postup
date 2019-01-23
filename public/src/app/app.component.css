@@ -44,12 +44,6 @@ header > a {
 	cursor:hand;
 } */
 
-.nav_btn {
-    box-sizing: border-box;
-    cursor:pointer;
-	cursor:hand;
-}
-
 header > a > .nav_btn {
     height: 50px;
     width: 100px;
@@ -57,6 +51,9 @@ header > a > .nav_btn {
     float: left;
     text-align: center;
     margin-left: 4%;
+    box-sizing: border-box;
+    cursor:pointer;
+	cursor:hand;
 }
 
 header > a > .nav_btn > p {
@@ -78,7 +75,7 @@ header > .nav_login > .nav_btn {
 
 header > .nav_logout > .nav_btn {
     height: 50px;
-    width: 120px;
+    width: 100px;
     /* background-color: cadetblue; */
     float: right;
     text-align: center;

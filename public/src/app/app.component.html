@@ -10,27 +10,27 @@
         <a *ngIf="!isUserLoggedIn" class="nav" [routerLink]="['/login']">Login/Register</a>
         <a *ngIf="isUserLoggedIn" class="nav" href="" (click)="logoutUser()">Logout</a> -->
 
-        <a class="nav_home" [routerLink]="['/dashboard']">
+        <a [routerLink]="['/dashboard']">
             <div class="nav_btn">
                 <p>Home</p>
             </div>
         </a>
-        <a class="nav_post" [routerLink]="['/post']">
+        <a [routerLink]="['/post']">
             <div class="nav_btn">
                 <p>New Post</p>
             </div>
         </a>
-        <a class="nav_profile" [routerLink]="['/profile']">
+        <a [routerLink]="['/profile']">
             <div class="nav_btn">
                 <p>Profile</p>
             </div>
         </a>
-        <a class="nav_friends" [routerLink]="['/friends']">
+        <a [routerLink]="['/friends']">
             <div class="nav_btn">
                 <p>Friends</p>
             </div>
         </a>
-        <a class="nav_news" [routerLink]="['/news']">
+        <a [routerLink]="['/news']">
             <div class="nav_btn">
                 <p>News</p>
             </div>
