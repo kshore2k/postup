@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../http.service';
 import { Router } from '@angular/router';
 import { DataSharingService } from '../data-sharing.service';
+import * as jquery from '../../assets/jquery/all-posts_component.js';
+
 @Component({
   selector: 'app-new-post',
   templateUrl: './new-post.component.html',
@@ -21,6 +23,7 @@ export class NewPostComponent implements OnInit {
 
   ngOnInit() {
     // this.getAuth();
+    jquery;
     this.newPost = {title: "", content: ""};
   }
 

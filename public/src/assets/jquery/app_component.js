@@ -39,6 +39,13 @@ import * as $ from 'jquery';
       $('#login_icon').attr('src', '/assets/img/user_icon_dark.png');
       $('#login_icon').animate({height: '45%'},200);
     });
+
+    // Set Home as Initial Active Link Class
+    var location = window.location.pathname;
+    if(location == '/dashboard'){
+      $('.nav_btn').removeClass('active');
+      $('#home').addClass('active');
+    };
     
     // Set Active Link Class
     $('.nav_btn').click(function(){

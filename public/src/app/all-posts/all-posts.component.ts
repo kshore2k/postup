@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../http.service';
 import { DataSharingService } from '../data-sharing.service';
+import * as jquery from '../../assets/jquery/all-posts_component.js';
 
 @Component({
   selector: 'app-all-posts',
@@ -18,6 +19,7 @@ export class AllPostsComponent implements OnInit {
   }
 
   ngOnInit() {
+    jquery;
     this.allPostsFromService();
     // this.getAuth();
   }

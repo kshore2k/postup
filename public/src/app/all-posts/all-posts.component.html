@@ -19,11 +19,32 @@
     <table class="post_row" *ngFor="let post of posts">
       <tr>
         <td id="topic"><a [routerLink]="['/post', post._id ]">{{ post.title }}</a></td>
-        <td id="author"><a [routerLink]="['/friends/',post.user_id]">{{ post.username }}</a></td>
         <td id="date"><a>{{ post.createdAt | date:'short' }}</a></td>
+        <td id="author"><a [routerLink]="['/friends/',post.user_id]">{{ post.username }}</a></td>
       </tr>
     </table>
 
+    <div id="page_top">
+      <p>GO TO TOP</p>
+    </div>
+
+  </div>
+
+  <div class="main_footer">
+    <p>© 2019, Kristofer Shore. PostUp is a trademark or registered trademark of KShore Designs, Inc. in the United States of America and elsewhere. All rights reserved.</p>
+    <a href="https://github.com/kshore2k"><img class="social_icon" src="assets/img/github_icon_dark.png" hover="assets/img/github_icon_light.png" alt="github"></a>
+    <a href="https://linkedin.com/in/kristofershore"><img class="social_icon" src="assets/img/linkedin_square_dark.png" hover="assets/img/linkedin_square_light.png" alt="linkedIn"></a>
+    <a href=""><img class="social_icon" src="assets/img/enso_dark.png" hover="assets/img/enso_light.png" alt="portfolio"></a>
+    
+    <div id="footer_border"></div>
+
+    <div class="technologies">
+      <h1>Technology</h1>
+      <img src="assets/img/mongodb_icon.png" alt="mongoDb">
+      <img src="assets/img/angular_icon.png" alt="angular">
+      <img src="assets/img/node_icon.png" alt="node">
+      <img id="jquery_icon" src="assets/img/jquery_icon.png" alt="jquery">
+    </div>
   </div>
 
 </div>
