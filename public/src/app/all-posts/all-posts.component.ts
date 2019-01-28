@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../http.service';
 import { DataSharingService } from '../data-sharing.service';
-import * as jquery from '../../assets/jquery/all-posts_component.js';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-all-posts',
@@ -19,7 +19,7 @@ export class AllPostsComponent implements OnInit {
   }
 
   ngOnInit() {
-    jquery;
+    this.runJquery();
     this.allPostsFromService();
     // this.getAuth();
   }
@@ -30,6 +30,28 @@ export class AllPostsComponent implements OnInit {
       console.log("Getting All Posts");
       this.posts = data;
     })
+  }
+
+  runJquery(){
+    $(document).ready(function(){
+
+      // Scroll Top Animation
+      $('#page_top').children().click(function(){
+          $('html, body').animate({scrollTop: $('html').offset().top}, 500)
+      })
+  
+      // Social Link Hover Effects
+      var imageSrc;
+      $('.social_icon').hover(
+          function(){
+              imageSrc = $(this).attr('src');
+              $(this).attr('src', $(this).attr('hover'))
+          },
+          function(){
+              $(this).attr('src', imageSrc)
+          }
+      );
+  })
   }
 
   // getAuth(){

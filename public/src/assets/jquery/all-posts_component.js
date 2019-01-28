@@ -2,10 +2,6 @@ import * as $ from 'jquery';
 
 $(document).ready(function(){
 
-    $('#page_top').children().mouseenter(function(){
-        $(this).animate({color: 'red'}, 1000)
-    })
-
     // Scroll Top Animation
     $('#page_top').children().click(function(){
         $('html, body').animate({scrollTop: $('html').offset().top}, 500)

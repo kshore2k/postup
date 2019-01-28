@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../http.service';
 import { Router } from '@angular/router';
 import { DataSharingService } from '../data-sharing.service';
-import * as jquery from '../../assets/jquery/all-posts_component.js';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-new-post',
@@ -23,7 +23,7 @@ export class NewPostComponent implements OnInit {
 
   ngOnInit() {
     // this.getAuth();
-    jquery;
+    this.runJquery();
     this.newPost = {title: "", content: ""};
   }
 
@@ -43,6 +43,29 @@ export class NewPostComponent implements OnInit {
       console.log("Created Post");
       this.newPost_id = data['_id'];
       this._router.navigate(['/post', this.newPost_id])
+    })
+  }
+
+  runJquery(){
+    $(document).ready(function(){
+
+      // Scroll Top Animation
+      $('#page_top').children().click(function(){
+          $('html, body').animate({scrollTop: $('html').offset().top}, 500)
+      });
+  
+      // Social Link Hover Effects
+      var imageSrc;
+      $('.social_icon').hover(
+          function(){
+              imageSrc = $(this).attr('src');
+              $(this).attr('src', $(this).attr('hover'))
+          },
+          function(){
+              $(this).attr('src', imageSrc)
+          }
+      );
+  
     })
   }
 
