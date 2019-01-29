@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../http.service';
 import { DataSharingService } from '../data-sharing.service';
 import { ChatService } from '../chat.service';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-friends',
@@ -28,11 +29,13 @@ export class FriendsComponent implements OnInit {
    }
 
   ngOnInit() {
+    this.runJquery();
     this.getFriendsFromService();
     this.newMessage = {content: ""};
     this._chatService.messages.subscribe(msg => { // Socket Test Console log Message
       // console.log(msg.text);
       this.chatLog.push(JSON.parse(msg.text));
+      $('.chatbox').animate({scrollTop: $('.chatbox').get(0).scrollHeight}, 2000); // Auto Scroll .chatbox Div On New Message
     })
     // this.getAuth();
   }
@@ -78,6 +81,29 @@ export class FriendsComponent implements OnInit {
   sendMessage(){
     this._chatService.sendMsg(this.user.username + ": " + this.newMessage.content); // Send Message Function through Chat Service
     this.newMessage = {content: ""};
+  }
+
+  runJquery(){
+    $(document).ready(function(){
+
+      // Scroll Top Animation
+      $('#page_top').children().click(function(){
+          $('html, body').animate({scrollTop: $('html').offset().top}, 500)
+      });
+  
+      // Social Link Hover Effects
+      var imageSrc;
+      $('.social_icon').hover(
+          function(){
+              imageSrc = $(this).attr('src');
+              $(this).attr('src', $(this).attr('hover'))
+          },
+          function(){
+              $(this).attr('src', imageSrc)
+          }
+      );
+  
+    })
   }
 
 }

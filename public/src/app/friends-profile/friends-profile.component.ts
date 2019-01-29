@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../http.service';
 import { ActivatedRoute } from '@angular/router';
 import { DataSharingService } from '../data-sharing.service';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-friends-profile',
@@ -28,7 +29,7 @@ export class FriendsProfileComponent implements OnInit {
    }
 
   ngOnInit() {
-    
+    this.runJquery();
     this._route.params.subscribe(params => {
       // this.friendId = params.id;
       // this.getAuth();
@@ -82,6 +83,28 @@ export class FriendsProfileComponent implements OnInit {
         }
       })
     }
-    
+  }
+
+  runJquery(){
+    $(document).ready(function(){
+
+      // Scroll Top Animation
+      $('#page_top').children().click(function(){
+          $('html, body').animate({scrollTop: $('html').offset().top}, 500)
+      });
+  
+      // Social Link Hover Effects
+      var imageSrc;
+      $('.social_icon').hover(
+          function(){
+              imageSrc = $(this).attr('src');
+              $(this).attr('src', $(this).attr('hover'))
+          },
+          function(){
+              $(this).attr('src', imageSrc)
+          }
+      );
+  
+    })
   }
 }
