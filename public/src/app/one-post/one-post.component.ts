@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { HttpService } from '../http.service';
 import { DataSharingService } from '../data-sharing.service';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-one-post',
@@ -26,6 +27,7 @@ export class OnePostComponent implements OnInit {
    }
 
   ngOnInit() {
+    
     this.onePostFromService();
     // this.getAuth();
     this.newComment = {comment: ""};
@@ -39,6 +41,7 @@ export class OnePostComponent implements OnInit {
       observable.subscribe(data => {
         console.log("Getting One Post");
         this.post = data;
+        this.runJquery();
       })
     })
   }
@@ -58,6 +61,49 @@ export class OnePostComponent implements OnInit {
       console.log("Deleted One Post", data);
       this._router.navigate(['/dashboard']);
 
+    })
+  }
+
+  runJquery(){
+    $(document).ready(function(){
+
+      // Scroll Top Animation
+      $('#page_top').children().click(function(){
+          $('html, body').animate({scrollTop: $('html').offset().top}, 500)
+      });
+
+      // Scroll To Add Comment Animation
+      $('#post_subheader').children().click(function(){
+        $('html, body').animate({scrollTop: $('#comment').offset().top}, 500)
+      });
+  
+      // Social Link Hover Effects
+      var imageSrc;
+      $('.social_icon').hover(
+          function(){
+              imageSrc = $(this).attr('src');
+              $(this).attr('src', $(this).attr('hover'))
+          },
+          function(){
+              $(this).attr('src', imageSrc)
+          }
+      );
+
+      // Submit Comment Form
+      $( "#submit_btn" ).click(function() {
+        $('#submit_comment').trigger('click');
+      });
+
+      // Cancel Comment / Clear Input
+      $('#cancel_btn').click(function(){
+        var value = $('#comment').val();
+        if(value.length > 0 && value != " Write something..."){
+          if(window.confirm('All changes made will be lost. Would you like to continue?')){
+            $('#comment').val('');
+          }
+        }
+      });
+  
     })
   }
 

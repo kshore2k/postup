@@ -16,7 +16,7 @@
       <div class="profile_container">
           
           <!-- IF LOGGED IN SHOW FRIEND PROFILE DETAILS -->
-          <div id="user_profile">
+          <div id="user_profile" *ngIf="friend">
             <h2>User Profile</h2>
 
             <h1>{{ friend.username }}</h1>

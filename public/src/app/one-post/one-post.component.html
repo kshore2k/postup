@@ -1,32 +1,128 @@
-<p>
-  one-post works!
-</p>
-
-<div *ngIf="post">
-  <h2>{{ post.title }}</h2>
+<!-- <div *ngIf="post"> -->
+  <!-- <h2>{{ post.title }}</h2>
   <h4>{{ post.content }}</h4>
-  <p>-Posted By {{ post.username }} on {{ post.createdAt | date:'short' }}</p>
+  <p>-Posted By {{ post.username }} on {{ post.createdAt | date:'short' }}</p> -->
 
   <!-- If Logged In User Created Post Allow For Delete -->
-  <button (click)="deletePostFromService(post._id)" *ngIf="post.username === user.username ">Delete</button>
+  <!-- <button (click)="deletePostFromService(post._id)" *ngIf="post.username === user.username ">Delete</button> -->
 
-  <h3>Comments:</h3>
+  <!-- <h3>Comments:</h3> -->
 
-  <span *ngFor="let comments of post.comments">
+  <!-- <span *ngFor="let comments of post.comments">
     <h5>{{ comments.comment }}</h5>
     <p>-{{ comments.username }}</p>
-  </span>
+  </span> -->
 
-  <div *ngIf="isUserLoggedIn">
-      <h3>Leave a Comment</h3>
+  <!-- <div *ngIf="isUserLoggedIn">
+      <h3>Leave a Comment</h3> -->
       
-      <form (submit)="addComment(post._id)">
+      <!-- <form (submit)="addComment(post._id)"> -->
         <!-- <p>{{ newComment | json }}</p> -->
-        <label for="comment">Comment:</label>
+        <!-- <label for="comment">Comment:</label>
         <input type="text" name="newComment.comment" [(ngModel)]="newComment.comment" id="comment">
 
         <input type="submit">
       </form>
+  </div> -->
+<!-- </div> -->
+
+
+<div class="main_container">
+
+  <img id="banner" src="/assets/img/postup_banner.jpg" alt="postUp_banner">
+
+  <div class="forum_container">
+
+    <p *ngIf="user.username">
+      {{ user.username }} signed in
+    </p>
+
+    <div class="post_header">
+      <h1 id="posts_div">Posts</h1>
+      <h1>Latest Activity</h1>
+    </div>
+
+    <div id="post_subheader"><h1>Scroll To Reply</h1></div>
+    
+    <!-- POST CONTAINER -->
+    <div *ngIf="post">
+      <div class="post_details">
+        <h1 *ngIf="user._id != post.user_id" [routerLink]="['/friends/',post.user_id]">{{ post.username }}</h1>
+        <h1 *ngIf="user._id == post.user_id" [routerLink]="['/profile']">{{ post.username }}</h1>
+        <h2>Junior Member</h2>
+        <h3>Join Date: </h3>
+        <h3>Posts: </h3>
+      </div>
+      <div class="post_content">
+        <h1>{{ post.title }}</h1>
+        <p>{{ post.createdAt | date:'short' }}</p>
+        <h3>{{ post.content }}</h3>
+        <div id="post_end"></div>
+
+        <!-- If Logged In User Created Post Allow For Delete -->
+        <button (click)="deletePostFromService(post._id)" *ngIf="post.username === user.username ">Delete</button>
+      </div>
+    </div>
+
+    <!-- COMMENTS CONTAINER -->
+    <div *ngIf="post">
+    <div *ngFor="let comments of post.comments">
+      <div class="post_details">
+        <h1 *ngIf="user._id != comments.user_id" [routerLink]="['/friends/',comments.user_id]">{{ comments.username }}</h1>
+        <h1 *ngIf="user._id == comments.user_id" [routerLink]="['/profile']">{{ comments.username }}</h1>
+        <h2>Junior Member</h2>
+        <h3>Join Date: </h3>
+        <h3>Posts: </h3>
+      </div>
+      <div class="post_content">
+        <p>{{ comments.createdAt | date:'short' }}</p>
+        <h3>{{ comments.comment }}</h3>
+        <div id="post_end"></div>
+      </div>
+    </div>
+    </div>
+
+    <!-- NEW COMMENT FORM -->
+    <div id="new_comment_container" *ngIf="isUserLoggedIn">
+
+      <div id="comment_options"></div>
+      
+      <form (submit)="addComment(post._id)">
+        <!-- <p>{{ newComment | json }}</p> -->
+        <input type="text" name="newComment.comment" placeholder=" Write something..." autocomplete="off" [(ngModel)]="newComment.comment" id="comment">
+
+        <input type="submit" id="submit_comment" hidden>
+      </form>
+    </div>
+
+    <div id="submit_container" *ngIf="isUserLoggedIn">
+        <button id="cancel_btn">Cancel</button>
+        <button id="submit_btn">Post Reply</button>
+    </div>
+
+    <div id="page_top">
+      <p>GO TO TOP</p>
+    </div>
+
   </div>
+
+  <div class="main_footer">
+    <p>© 2019, Kristofer Shore. PostUp is a trademark or registered trademark of KShore Designs, Inc. in the United States of America and elsewhere. All rights reserved.</p>
+    <a href="https://github.com/kshore2k"><img class="social_icon" src="assets/img/github_icon_dark.png" hover="assets/img/github_icon_light.png" alt="github"></a>
+    <a href="https://linkedin.com/in/kristofershore"><img class="social_icon" src="assets/img/linkedin_square_dark.png" hover="assets/img/linkedin_square_light.png" alt="linkedIn"></a>
+    <a href=""><img class="social_icon" src="assets/img/enso_dark.png" hover="assets/img/enso_light.png" alt="portfolio"></a>
+    
+    <div id="footer_border"></div>
+
+    <div class="technologies">
+      <h1>Technology</h1>
+      <img src="assets/img/mongodb_icon.png" alt="mongoDb">
+      <img src="assets/img/angular_icon.png" alt="angular">
+      <img src="assets/img/node_icon.png" alt="node">
+      <img id="jquery_icon" src="assets/img/jquery_icon.png" alt="jquery">
+    </div>
+  </div>
+
 </div>
+
 

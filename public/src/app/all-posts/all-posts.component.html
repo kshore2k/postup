@@ -20,7 +20,10 @@
       <tr>
         <td id="topic"><a [routerLink]="['/post', post._id ]">{{ post.title }}</a></td>
         <td id="date"><a>{{ post.createdAt | date:'short' }}</a></td>
-        <td id="author"><a [routerLink]="['/friends/',post.user_id]">{{ post.username }}</a></td>
+        <td id="author">
+          <a *ngIf="user._id != post.user_id" [routerLink]="['/friends/',post.user_id]">{{ post.username }}</a>
+          <a *ngIf="user._id == post.user_id" [routerLink]="['/profile']">{{ post.username }}</a>
+        </td>
       </tr>
     </table>
 
