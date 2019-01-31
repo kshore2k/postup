@@ -27,7 +27,7 @@ export class OnePostComponent implements OnInit {
    }
 
   ngOnInit() {
-    
+    this.runJquery();
     this.onePostFromService();
     // this.getAuth();
     this.newComment = {comment: ""};
@@ -41,7 +41,6 @@ export class OnePostComponent implements OnInit {
       observable.subscribe(data => {
         console.log("Getting One Post");
         this.post = data;
-        this.runJquery();
       })
     })
   }

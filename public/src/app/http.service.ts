@@ -71,10 +71,32 @@ export class HttpService {
   }
 
   // NEWS
-  getNews(){
-    return this._http.get('https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=84a2560fcff14846a83c31297697500e')
+  getTechCrunch(){
+    return this._http.get('https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=84a2560fcff14846a83c31297697500e');
   }
 
-  
+  getNextBigFuture(){
+    return this._http.get('https://newsapi.org/v2/top-headlines?sources=next-big-future&apiKey=84a2560fcff14846a83c31297697500e');
+  }
+
+  getTechRadar(){
+    return this._http.get('https://newsapi.org/v2/top-headlines?sources=techradar&apiKey=84a2560fcff14846a83c31297697500e');
+  }
+
+  getPolygon(){
+    return this._http.get('https://newsapi.org/v2/top-headlines?sources=polygon&apiKey=84a2560fcff14846a83c31297697500e');
+  }
+
+  getWired(){
+    return this._http.get('https://newsapi.org/v2/top-headlines?sources=wired&apiKey=84a2560fcff14846a83c31297697500e');
+  }
+
+  getTheVerge(){
+    return this._http.get('https://newsapi.org/v2/top-headlines?sources=the-verge&apiKey=84a2560fcff14846a83c31297697500e');
+  }
+
+  getIgn(){
+    return this._http.get('https://newsapi.org/v2/top-headlines?sources=ign&apiKey=84a2560fcff14846a83c31297697500e');
+  }
 
 }
