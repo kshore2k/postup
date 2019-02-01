@@ -78,21 +78,20 @@ export class AppComponent implements OnInit{
         $('#login_icon').animate({height: '45%'},200);
       });
   
-      // Set Home as Initial Active Link Class
-      var location = window.location.pathname;
-      if(location == '/dashboard'){
+      // Set Active Link Class On Page Load
+      var location = window.location.pathname.replace('/','');
         $('.nav_btn').removeClass('active');
-        $('#home').addClass('active');
-      };
+        $('#' + location).addClass('active');
       
-      // Set Active Link Class
-      $('.nav_btn').click(function(){
+      // Set Active Link Class On Click
+      $('.nav_btn').on('click',function(){
         if($(this).hasClass('active') != true){
           $('.active').animate({borderWidth: 0}, 200);
         }
         $('.nav_btn').removeClass('active');
         $(this).addClass('active');
       });   
+
     })
   }
 
