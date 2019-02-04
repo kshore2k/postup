@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../http.service';
 import { DataSharingService } from '../data-sharing.service';
 import { Router } from '@angular/router';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-login-register',
@@ -17,6 +18,7 @@ export class LoginRegisterComponent implements OnInit {
   constructor(private _httpService: HttpService, private _dataSharingService: DataSharingService, private _router: Router) { }
 
   ngOnInit() {
+    this.runJquery();
     this.loginUser = {email: "", password: ""};
     this.newUser = {first_name: "", last_name: "", email: "", username: "", password: ""};
   }
@@ -52,6 +54,37 @@ export class LoginRegisterComponent implements OnInit {
         this._dataSharingService.isUserLoggedIn.next(true);
         this._router.navigate(['/dashboard']);
       }
+    })
+  }
+
+  runJquery(){
+    $(document).ready(function(){
+
+      // Scroll Top Animation
+      $('#page_top').children().click(function(){
+          $('html, body').animate({scrollTop: $('html').offset().top}, 500)
+      });
+  
+      // Social Link Hover Effects
+      var imageSrc;
+      $('.social_icon').hover(
+          function(){
+              imageSrc = $(this).attr('src');
+              $(this).attr('src', $(this).attr('hover'))
+          },
+          function(){
+              $(this).attr('src', imageSrc)
+          }
+      );
+
+      $('#show_registration').click(function(){
+        $('#registration_wrap').fadeIn('slow')
+      });
+
+      $('#cancel_btn').click(function(){
+        $('#registration_wrap').css('display', 'none')
+      })
+  
     })
   }
 
