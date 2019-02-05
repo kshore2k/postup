@@ -3,18 +3,21 @@
   <p id="cancel_btn">x</p>
 
   <div id="registration_form">
-      <p class="errors" *ngIf="registerFlash">All Fields Required</p>
 
-      <form (submit)="registerUser()">
-        
-        <input type="text" name="newUser.first_name" placeholder="*First Name" [(ngModel)]="newUser.first_name" id="first_name">
-        <input type="text" name="newUser.last_name" placeholder="*Last Name" [(ngModel)]="newUser.last_name" id="last_name">
-        <input type="email" name="newUser.email" placeholder="*Email" [(ngModel)]="newUser.email" id="email">
-        <input type="text" name="newUser.username" placeholder="*Username" [(ngModel)]="newUser.username" id="username">
-        <input type="text" name="newUser.password" placeholder="*Password" [(ngModel)]="newUser.password" id="password">
-  
-        <input type="submit" value="Register">
-      </form>
+    <img src="assets/img/register_banner.png" alt="postUp_banner">
+
+    <p class="errors" *ngIf="registerFlash">All Fields Required</p>
+
+    <form (submit)="registerUser()">
+      
+      <input type="text" name="newUser.first_name" placeholder="*First Name" [(ngModel)]="newUser.first_name" class="register">
+      <input type="text" name="newUser.last_name" placeholder="*Last Name" [(ngModel)]="newUser.last_name" class="register">
+      <input type="email" name="newUser.email" placeholder="*Email" [(ngModel)]="newUser.email" class="register">
+      <input type="text" name="newUser.username" placeholder="*Username" [(ngModel)]="newUser.username" class="register">
+      <input type="password" name="newUser.password" placeholder="*Password" [(ngModel)]="newUser.password" class="register">
+
+      <input type="submit" value="Register">
+    </form>
   </div>
   
 </div>
@@ -37,7 +40,7 @@
         <form (submit)="checkLogin()">
           
           <input type="email" name="loginUser.email" placeholder="Email" [(ngModel)]="loginUser.email" id="email">
-          <input type="text" name="loginUser.password" placeholder="Password" [(ngModel)]="loginUser.password" id="password">
+          <input type="password" name="loginUser.password" placeholder="Password" [(ngModel)]="loginUser.password" id="password">
 
           <input type="submit" value="Login">
         </form>
@@ -45,7 +48,7 @@
 
       <div id="register_here">
         <p>Not Already A Member?</p>
-        <button id="show_registration">Register</button>
+        <button id="show_registration">Sign Up</button>
       </div>
 
     </div>

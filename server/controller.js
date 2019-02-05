@@ -72,16 +72,16 @@ module.exports = {
         var transporter = nodemailer.createTransport({
             service: 'gmail',
             auth: {
-                user: '****@gmail.com', // *Admin Email
-                pass: '****' // *Admin Pass
+                user: 'postup.ksdesigns@gmail.com', // *Admin Email
+                pass: '' // *Admin Pass
             }
         });
         
         var mailOptions = {
-            from: '****@gmail.com', // *Admin Email
+            from: 'Admin@postup', // *Admin Email
             to: req.session.email,
             subject: 'Password Reset Request',
-            html: '<a href="http://localhost:8000/profile/'+req.params.id+'/edit">Click Here To Change Password</a>'
+            html: '<a href="http://localhost:8000/profile/'+req.params.id+'/edit">Click Here To Change Your Password</a>'
         };
         
         transporter.sendMail(mailOptions, function(error, info){

@@ -19,6 +19,19 @@
     width: 85%;
     height: auto;
     /* background-color: burlywood; */
+    text-align: left;
+}
+
+#username {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 14px;
+    letter-spacing: 1px;
+    color: rgb(31, 31, 31);
+    margin-bottom: 5px;
+}
+
+#username > span {
+    color: #ff5900;
 }
 
 .forum_header {

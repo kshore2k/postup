@@ -33,8 +33,8 @@
 
   <div class="forum_container">
 
-    <p *ngIf="user.username">
-      {{ user.username }} signed in
+    <p id="username" *ngIf="user.username">
+      <span>{{ user.username }}</span> signed in
     </p>
 
     <div class="post_header">

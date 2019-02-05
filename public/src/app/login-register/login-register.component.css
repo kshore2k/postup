@@ -5,7 +5,7 @@
 
 #registration_wrap {
     position: absolute;
-    height: 100%;
+    height: 1000px;
     width: 100%;
     background-color: #252525cc;
     opacity: 50%;
@@ -31,8 +31,13 @@
     height: auto;
     width: 400px;
     background-color: white;
-    margin-top: 100px;
+    margin-top: 50px;
     padding: 20px;
+}
+
+#registration_form > img {
+    width: 100%;
+    height: auto;
 }
 
 .main_container {
@@ -95,7 +100,7 @@
     /* background-color: chocolate; */
 }
 
-input[type=text], input[type=email]  {
+input[type=text], input[type=email], input[type=password]  {
     width: 100%;
     height: 50px;
     margin-bottom: 10px;
@@ -110,6 +115,10 @@ input[type=submit], button {
     color: white;
     cursor: pointer;
     cursor: hand;
+}
+
+input[type=submit]:hover, button:hover {
+    background-color: #2591d8;
 }
 
 #register_here {

@@ -83,6 +83,7 @@ export class LoginRegisterComponent implements OnInit {
 
       $('#cancel_btn').click(function(){
         $('#registration_wrap').css('display', 'none')
+        $('.register').val('')
       })
   
     })
