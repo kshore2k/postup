@@ -4,7 +4,11 @@
 
   <div class="forum_container">
 
-    <p id="username" *ngIf="user.username">
+    <p class="username" id="not_signed_in" *ngIf="!user.username">
+      Not Signed In
+    </p>
+
+    <p class="username" *ngIf="user.username">
      <span>{{ user.username }}</span> signed in
     </p>
 

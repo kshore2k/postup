@@ -14,6 +14,7 @@ export class LoginRegisterComponent implements OnInit {
   newUser: any;
   loginFlash: any;
   registerFlash: any;
+  confirmation: any;
 
   constructor(private _httpService: HttpService, private _dataSharingService: DataSharingService, private _router: Router) { }
 
@@ -52,7 +53,10 @@ export class LoginRegisterComponent implements OnInit {
       else {
         this._dataSharingService.loggedInUser.next(data);
         this._dataSharingService.isUserLoggedIn.next(true);
-        this._router.navigate(['/dashboard']);
+        this.confirmation = "Successfully Registered!"
+        setTimeout( () => {
+          this._router.navigate(['/dashboard']);
+        },2000)
       }
     })
   }

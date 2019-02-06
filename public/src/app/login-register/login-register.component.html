@@ -8,7 +8,9 @@
 
     <p class="errors" *ngIf="registerFlash">All Fields Required</p>
 
-    <form (submit)="registerUser()">
+    <p *ngIf="confirmation" id="confirmation_msg">{{ confirmation }}</p>
+
+    <form *ngIf="!confirmation" (submit)="registerUser()">
       
       <input type="text" name="newUser.first_name" placeholder="*First Name" [(ngModel)]="newUser.first_name" class="register">
       <input type="text" name="newUser.last_name" placeholder="*Last Name" [(ngModel)]="newUser.last_name" class="register">
