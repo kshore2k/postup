@@ -23,8 +23,8 @@
               <input type="text" placeholder=" Enter title" name="newPost.title" autocomplete="off" [(ngModel)]="newPost.title" id="title">
               <input type="text" placeholder=" Write something..." name="newPost.content" autocomplete="off" [(ngModel)]="newPost.content" id="content">
               
-              <input type="submit" value="Post" id="post_btn">
-              <button [routerLink]="['/dashboard']" id="cancel_btn">Cancel</button>
+              <button id="post_btn">Post</button>
+              <button type="button" [routerLink]="['/dashboard']" id="cancel_btn">Cancel</button>
             </form>
           </div>
         

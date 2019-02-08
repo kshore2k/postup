@@ -85,7 +85,7 @@ export class LoginRegisterComponent implements OnInit {
         $('#registration_wrap').fadeIn('slow')
       });
 
-      $('#cancel_btn').click(function(){
+      $('#web_cancel, #mbl_cancel').click(function(){
         $('#registration_wrap').css('display', 'none')
         $('.register').val('')
       })

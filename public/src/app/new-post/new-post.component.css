@@ -220,8 +220,28 @@
         display: inline-block;
     }
 
+    #create_post {
+        text-align: center;
+    }
+
     #title {
         width: 100%;
+    }
+
+    #post_btn, #cancel_btn {
+        width: 140px;
+    }
+
+    #cancel_btn {
+        margin-right: -25px;
+    }
+
+    #post_btn {
+        margin-right: 35px;
+    }
+
+    #cancel_btn {
+        float: none;
     }
 
     #page_top {
