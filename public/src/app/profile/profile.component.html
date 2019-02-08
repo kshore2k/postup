@@ -1,12 +1,3 @@
-<!-- <div *ngIf="isUserLoggedIn">
-  <h4>Full Name: {{ user.first_name }} {{ user.last_name }}</h4>
-  <h4>Email: {{ user.email }}</h4>
-  <h4>Username: {{ user.username }}</h4> -->
-  
-  <!-- Sends Password Change Request Email -->
-  <!-- <button (click)="editPasswordRequest(user._id)">Change Password</button>
-</div> -->
-
 <div class="main_container">
 
     <img id="banner" src="/assets/img/postup_banner.jpg" alt="postUp_banner">
@@ -19,20 +10,25 @@
           <div id="request_login" *ngIf="!isUserLoggedIn">
             <h4>Please <a [routerLink]="['/login']">Login</a> or <a [routerLink]="['/login']">Register</a> to view your profile.</h4>
           </div>
-          
+
+          <p id="break">break</p>
+
           <!-- IF LOGGED IN SHOW USER PROFILE DETAILS -->
           <div id="user_profile" *ngIf="isUserLoggedIn">
             <h2>User Profile</h2>
 
             <h1>{{ user.username }}</h1>
             <div id="logged_icon"></div>
-            <button id="pass_reset_btn" (click)="editPasswordRequest(user._id)">EDIT PASSWORD</button>
+
+            <!-- Sends Password Change Request Email -->
+            <button id="pass_reset_btn" (click)="editPasswordRequest(user._id)">Edit Password</button>
 
             <h3>Junior Member</h3>
             <h4>Full Name: {{ user.first_name }} {{ user.last_name }}</h4>
             <h4>Email: {{ user.email }}</h4>
-            
-            <!-- Sends Password Change Request Email -->
+
+            <!-- Sends Password Change Request Email (Moved for Mobile) -->
+            <button id="mbl_pass_reset_btn" (click)="editPasswordRequest(user._id)">Edit Password</button>
             
           </div>
         

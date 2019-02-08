@@ -14,10 +14,14 @@ export class NewPostComponent implements OnInit {
   newPost_id: any;
   // username: any;
   isUserLoggedIn: boolean;
+  user: any;
 
   constructor(private _httpService: HttpService, private _router: Router, private _dataSharingService: DataSharingService) {
     this._dataSharingService.isUserLoggedIn.subscribe( value => { // Subscribe to Login Boolean in DataSharingService
       this.isUserLoggedIn = value;
+    })
+    this._dataSharingService.loggedInUser.subscribe( value => {  // Subscribe to User Data Saved in DataSharingService
+      this.user = value;
     })
   }
 

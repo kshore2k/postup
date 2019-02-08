@@ -32,6 +32,10 @@
     /* border-bottom: 1px solid #ebeaea; */
 }
 
+#break {
+    display: none;
+}
+
 #request_login {
     height: 200px;
 }
@@ -87,7 +91,7 @@
     display: inline-block;
 }
 
-.friend_options_btn {
+.friend_options_btn, .mbl_friend_options_btn {
     height: 40px;
     width: 120px;
     background-color: #1a6a9f;
@@ -98,6 +102,10 @@
     margin: 4px 0 0 50px;
     cursor: pointer;
     cursor: hand;
+}
+
+.mbl_friend_options_btn {
+    display: none;
 }
 
 #friend_details > h3, #friend_details > h5 {
@@ -286,7 +294,88 @@ input:focus {
 }
 
 .chat_btn {
-    height: 10px;
-    width: 80px;
-    margin-top: 8px;
+    display: none;
+}
+
+/* Media Queries */
+@media(max-width: 768px){
+    #banner {
+        display: none;
+    }
+
+    .forum_container {
+        width: 100%;
+        height: 100%;
+        text-align: center;
+    }
+
+    #request_login {
+        height: 500px;
+        width: 100%;
+        background-color: #eef4f6;
+    }
+
+    #request_login > h4 {
+        margin-top: 40px;
+        display: inline-block;
+    }
+
+    #break {
+        display: initial;
+        color: #eef4f6;
+    }
+
+    #friend_profile {
+        text-align: center;
+    }
+
+    .friend_options_btn {
+        display: none;
+    }
+
+    .mbl_friend_options_btn {
+        display: initial;
+        width: 80px;
+        margin: 4px 10px 0 10px;
+    }
+
+    #page_top {
+        display: none;
+    }
+
+    .main_footer {
+        height: auto;
+        padding-top: 0 !important;
+    }
+
+    .main_footer > p, .technologies {
+        display: none;
+    }
+
+    .social_icon {
+        margin: 10px 20px 10px 20px !important;
+    }
+
+    #footer_border {
+        display: none;
+    }
+
+    .chat_container {
+        width: 100%;
+    }
+
+    .chatbox {
+        width: 100%;
+    }
+
+    #chat_input {
+        width: 60%;
+    }
+
+    .chat_btn {
+        display: initial;
+        height: 30px;
+        width: 80px;
+        /* margin-top: 8px; */
+    }
 }

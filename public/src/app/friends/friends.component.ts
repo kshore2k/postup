@@ -79,8 +79,10 @@ export class FriendsComponent implements OnInit {
   }
 
   sendMessage(){
-    this._chatService.sendMsg(this.user.username + ": " + this.newMessage.content); // Send Message Function through Chat Service
-    this.newMessage = {content: ""};
+    if(this.newMessage.content != ""){
+      this._chatService.sendMsg(this.user.username + ": " + this.newMessage.content); // Send Message Function through Chat Service
+      this.newMessage = {content: ""};
+    }
   }
 
   runJquery(){

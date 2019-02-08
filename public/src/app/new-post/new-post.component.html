@@ -3,6 +3,10 @@
     <img id="banner" src="/assets/img/postup_banner.jpg" alt="postUp_banner">
   
     <div class="forum_container">
+      
+      <p class="username" *ngIf="user.username">
+        <span>{{ user.username }}</span> signed in
+      </p>
   
       <div class="post_container">
 
