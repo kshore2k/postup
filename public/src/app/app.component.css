@@ -20,6 +20,10 @@ header > #title {
     margin: 10px 40px 0 0; 
 }
 
+#mbl_banner {
+    display: none;
+}
+
 header > a > .nav_btn {
     height: 50px;
     width: 100px;
@@ -82,14 +86,15 @@ header > .nav_logout > .nav_btn {
     }
 
     header > #logo, header > #title {
-        float: none;
-    }
-    
-    header > #logo {
-        margin-left: 10px;
-        margin-right: 10px;
+        display: none;
     }
 
+    #mbl_banner {
+        display: initial;
+        height: 70px;
+        width: 100%;
+    }
+    
     .nav_btn {
         float: none;
         width: 100% !important;
