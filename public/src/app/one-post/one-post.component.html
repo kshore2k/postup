@@ -25,8 +25,8 @@
         <h1 *ngIf="user._id != post.user_id" [routerLink]="['/friends/',post.user_id]">{{ post.username }}</h1>
         <h1 *ngIf="user._id == post.user_id" [routerLink]="['/profile']">{{ post.username }}</h1>
         <h2>Junior Member</h2>
-        <h3>Join Date: </h3>
-        <h3>Posts: </h3>
+        <h3 *ngIf="poster">Join Date: {{ poster.createdAt | date:'mediumDate' }}</h3>
+        <h3 *ngIf="poster">Posts: {{ poster.posts }}</h3>
       </div>
       <div class="post_content">
         <h1>{{ post.title }}</h1>
@@ -46,8 +46,8 @@
         <h1 *ngIf="user._id != comments.user_id" [routerLink]="['/friends/',comments.user_id]">{{ comments.username }}</h1>
         <h1 *ngIf="user._id == comments.user_id" [routerLink]="['/profile']">{{ comments.username }}</h1>
         <h2>Junior Member</h2>
-        <h3>Join Date: </h3>
-        <h3>Posts: </h3>
+        <!-- <h3>Join Date: </h3> -->
+        <!-- <h3>Posts: </h3> -->
       </div>
       <div class="post_content">
         <p>{{ comments.createdAt | date:'short' }}</p>

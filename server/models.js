@@ -23,7 +23,7 @@ var UserSchema = new mongoose.Schema({
     email: {type: String, required: [true, "Email Required"], unique: true},
     username: {type: String, required: [true, "Username Required"], minlength: [5, "Minimun 5 Characters"], unique: true},
     password: {type: String, required: [true, "Password Required"]},
-    posts: [PostSchema]
+    posts: {type: Number, default: 0, required: false}
 }, { timestamps: true })
 
 UserSchema.plugin(uniqueValidator);

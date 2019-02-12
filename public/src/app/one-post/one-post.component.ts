@@ -12,7 +12,9 @@ import * as $ from 'jquery';
 export class OnePostComponent implements OnInit {
   post_id: any;
   post: any;
+  poster: any;
   newComment: any;
+  commentors = [];
   isUserLoggedIn: boolean;
   user: any;
 
@@ -41,7 +43,15 @@ export class OnePostComponent implements OnInit {
       observable.subscribe(data => {
         console.log("Getting One Post");
         this.post = data;
+        this.posterDetails(data['user_id']);
       })
+    })
+  }
+
+  posterDetails(id){
+    let observable = this._httpService.getOneUser(id);
+    observable.subscribe(data => {
+      this.poster = data;
     })
   }
 

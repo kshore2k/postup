@@ -146,7 +146,14 @@ module.exports = {
     },
     addPost: (req,res) => {
         Post.create({user_id: req.session.user_id, username: req.session.username, title: req.body.title, content: req.body.content}) //Changed to Session User_id/name
-            .then((data)=>res.json(data))
+            .then(data => {
+                User.findByIdAndUpdate(req.session.user_id, {$inc: {posts:1}}, function (err, data) {
+                    if(err){
+                        console.log(err)
+                    }
+                });
+                res.json(data)
+            })
             .catch((err)=>res.json(err))
     },
     editPost: (req,res) => {
@@ -156,7 +163,14 @@ module.exports = {
     },
     destroyPost: (req,res) => {
         Post.deleteOne({_id: req.params.id})
-            .then((data)=>res.json(data))
+            .then(data => {
+                User.findByIdAndUpdate(req.session.user_id, {$inc: {posts:-1}}, function (err, data) {
+                    if(err){
+                        console.log(err)
+                    }
+                });
+                res.json(data)
+            })
             .catch((err)=>res.json(err))
     },
     // COMMENT CONTROLS
