@@ -17,6 +17,7 @@
           <div id="user_profile" *ngIf="isUserLoggedIn">
             <h2>User Profile</h2>
 
+            <img id="avatar" src={{user.avatar}} alt="avatar">
             <h1>{{ user.username }}</h1>
             <div id="logged_icon"></div>
 
@@ -26,6 +27,13 @@
             <h3>Junior Member</h3>
             <h4>Full Name: {{ user.first_name }} {{ user.last_name }}</h4>
             <h4>Email: {{ user.email }}</h4>
+
+            <!-- Avatar Upload Controls -->
+            <input hidden (change)="onFileSelected($event)" type="file" #fileUpload>
+
+            <button id="choose_file_btn" (click)="fileUpload.click()">Set Avatar</button>
+            <button *ngIf="image_set == true" id="upload_btn" (click)="uploadImage()">Upload</button>
+            <p *ngIf="avatar_set == true" id="avatar_confirm">&#10004;</p>
 
             <!-- Sends Password Change Request Email (Moved for Mobile) -->
             <button id="mbl_pass_reset_btn" (click)="editPasswordRequest(user._id)">Edit Password</button>

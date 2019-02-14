@@ -70,6 +70,10 @@ export class HttpService {
     return this._http.put('/api/users/'+id, newPassword);
   }
 
+  setAvatar(id,avatar){
+    return this._http.put('/api/users/'+id+'/avatar', avatar)
+  }
+
   // NEWS
   getTechCrunch(){
     return this._http.get('https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=84a2560fcff14846a83c31297697500e');
@@ -97,6 +101,11 @@ export class HttpService {
 
   getIgn(){
     return this._http.get('https://newsapi.org/v2/top-headlines?sources=ign&apiKey=84a2560fcff14846a83c31297697500e');
+  }
+
+  // IMAGE UPLOAD
+  uploadImage(image){
+    return this._http.post('https://cors-anywhere.herokuapp.com/https://pictshare.net/api/upload.php', image);
   }
 
 }

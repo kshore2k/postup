@@ -12,6 +12,10 @@ import * as $ from 'jquery';
 export class ProfileComponent implements OnInit {
   isUserLoggedIn: boolean;
   user: any;
+  image_set: Boolean = false;
+  image_url: any;
+  avatar_set: Boolean = false;
+  selectedFile: File = null;
 
   constructor(private _httpService: HttpService, private _router: Router, private _dataSharingService: DataSharingService) { 
     this._dataSharingService.isUserLoggedIn.subscribe( value => { // Subscribe to Login Boolean in DataSharingService
@@ -55,6 +59,29 @@ export class ProfileComponent implements OnInit {
         this._router.navigate(['/dashboard']);
       })
     }
+  }
+
+  // SELECT AVATAR IMAGE
+  onFileSelected(event){
+    console.log(event)
+    this.selectedFile = <File>event.target.files[0];
+    this.image_set = true;
+  }
+
+  // UPLOAD AVATAR IMAGE
+  uploadImage(){
+    const imageData = new FormData();
+    imageData.append('file', this.selectedFile, this.selectedFile.name);
+    let observable = this._httpService.uploadImage(imageData);
+    observable.subscribe(data => {
+      console.log(data);
+      this.image_url = {image: data['url']};
+      let observable = this._httpService.setAvatar(this.user._id,this.image_url);
+      observable.subscribe(data => {
+        console.log(data);
+        this.avatar_set = true;
+      })
+    })
   }
 
   runJquery(){

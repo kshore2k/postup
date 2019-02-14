@@ -63,6 +63,15 @@
     margin-bottom: 20px;
 }
 
+#user_profile > #avatar {
+    height: 50px;
+    width: 50px;
+    border-radius: 50px;
+    display: block;
+    float: left;
+    margin-right: 10px;
+}
+
 #user_profile > h1 {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 38px;
@@ -118,7 +127,28 @@
     font-weight: 400;
     letter-spacing: 1px;
     color: rgb(58, 58, 58);
-    margin-bottom: 5px;
+    margin:0 0 5px 60px;
+}
+
+#user_profile > #choose_file_btn, #upload_btn {
+    height: 20px;
+    width: 100px;
+    background-color: #1a6a9f;
+    font-size: 10px;
+    letter-spacing: 1px;
+    color: white;
+    cursor: pointer;
+    cursor: hand;
+    margin: 5px 5px 5px 60px;
+}
+
+#user_profile > #upload_btn {
+    margin-left: 0;
+}
+
+#user_profile > #avatar_confirm {
+    color: #79ca07;
+    display: inline-block;
 }
 
 #page_top {

@@ -23,6 +23,7 @@ var UserSchema = new mongoose.Schema({
     email: {type: String, required: [true, "Email Required"], unique: true},
     username: {type: String, required: [true, "Username Required"], minlength: [5, "Minimun 5 Characters"], unique: true},
     password: {type: String, required: [true, "Password Required"]},
+    avatar: {type: String, default: "https://howlongtobeat.com/avatars/1546983199.png", required: false},
     posts: {type: Number, default: 0, required: false}
 }, { timestamps: true })
 

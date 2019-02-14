@@ -104,6 +104,11 @@ module.exports = {
             })
             .catch((err)=>res.json(err))
     },
+    addAvatar: (req,res) => {
+        User.findOneAndUpdate({_id: req.params.id}, {$set: {avatar: req.body.image}}, {runValidators: true, context: 'query', new: true})
+            .then((data)=>res.json(data))
+            .catch((err)=>res.json(err))
+    },
     destroyUser: (req,res) => {
         Friends_List.deleteOne({user_id: req.params.id}) // delete friends list of user
             .then(() => {

@@ -11,6 +11,7 @@ module.exports = (app) => {
     app.get('/api/users/:id', controller.oneUser);
     app.get('/api/users/:id/email', controller.email);
     app.put('/api/users/:id', controller.editUser);
+    app.put('/api/users/:id/avatar', controller.addAvatar);
     app.delete('/api/users/:id', controller.destroyUser);
     // USER / FRIEND ROUTES
     app.get('/api/users/:id/friends', controller.allFriends);
