@@ -27,6 +27,7 @@
     letter-spacing: 1px;
     color: rgb(31, 31, 31);
     margin-bottom: 5px;
+    text-align: left;
 }
 
 .username > span {
@@ -218,6 +219,10 @@
     #request_login > h4 {
         margin-top: 40px;
         display: inline-block;
+    }
+
+    .username {
+        text-align: center;
     }
 
     #create_post {

@@ -72,11 +72,13 @@ export class FriendsProfileComponent implements OnInit {
     if(this.isUserLoggedIn){
       let observable = this._httpService.getFriends(this.user._id);
       observable.subscribe(data => {
-        for(var x in data['friends']){
-          if(data['friends'][x]['_id'] === this.friend._id){
-            this.friendAdded = true;
-            this.msg = "Is Your Friend!"
-          }
+        if(data != null){
+          for(var x in data['friends']){
+            if(data['friends'][x]['_id'] === this.friend._id){
+              this.friendAdded = true;
+              this.msg = "Is Your Friend!"
+            }
+        }
           // else {
           //   this.friendAdded = false;
           // }

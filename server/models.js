@@ -20,14 +20,17 @@ var PostSchema = new mongoose.Schema({
 var UserSchema = new mongoose.Schema({
     first_name: {type: String, required: [true, "First Name Required"]},
     last_name: {type: String, required: [true, "Last Name Required"]},
-    email: {type: String, required: [true, "Email Required"], unique: true},
-    username: {type: String, required: [true, "Username Required"], minlength: [5, "Minimun 5 Characters"], unique: true},
+    email: {type: String, required: [true, "Email Required"]},
+    username: {type: String, required: [true, "Username Required"], minlength: [5, "Minimun 5 Characters"]},
     password: {type: String, required: [true, "Password Required"]},
-    avatar: {type: String, default: "https://howlongtobeat.com/avatars/1546983199.png", required: false},
+    avatar: {type: String, default: "https://pictshare.net/9m4t0r.png", required: false},
     posts: {type: Number, default: 0, required: false}
 }, { timestamps: true })
 
-UserSchema.plugin(uniqueValidator);
+// Need to Fix unique Validator & add unique: true to username and email in UserSchema
+// FriendsSchema is throwing dup key error when trying to add a friend that is already someone else's friend
+
+// UserSchema.plugin(uniqueValidator);
 
 var FriendSchema = new mongoose.Schema({
     user_id: {type: String, required: true},

@@ -43,16 +43,31 @@ export class OnePostComponent implements OnInit {
       observable.subscribe(data => {
         console.log("Getting One Post");
         this.post = data;
-        this.posterDetails(data['user_id']);
+        this.posterDetails(data['user_id']); // **Post Should Instead Be Attached to Each User**
+        this.commentorDetails(this.post);
       })
     })
   }
 
+  // GET DETAILS OF POSTER
   posterDetails(id){
     let observable = this._httpService.getOneUser(id);
     observable.subscribe(data => {
       this.poster = data;
     })
+  }
+
+  // GET DETAILS OF COMMENTORS
+  commentorDetails(post){
+    if(post['comments'] != null){
+      for(var x in post['comments']){
+        var oneCom = post['comments'][x];
+        let observable = this._httpService.getOneUser(oneCom['user_id']);
+        observable.subscribe(data => {
+          this.commentors.push({user:data});
+        })
+      }
+    }
   }
 
   addComment(id){

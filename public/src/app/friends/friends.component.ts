@@ -56,7 +56,9 @@ export class FriendsComponent implements OnInit {
       let observable = this._httpService.getFriends(this.user._id);
       observable.subscribe(data => {
         console.log("Fetched Friends", data);
-        this.friends = data['friends'];
+        if(data != null){
+          this.friends = data['friends'];
+        }
       })
     }
     

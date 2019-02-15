@@ -72,6 +72,15 @@
     border-bottom: 1px solid #ebeaea;
 }
 
+#friend_details > #avatar {
+    height: 50px;
+    width: 50px;
+    border-radius: 50px;
+    display: block;
+    float: left;
+    margin-right: 10px;
+}
+
 #friend_details > h1 {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 38px;
@@ -123,7 +132,7 @@
     font-weight: 400;
     letter-spacing: 1px;
     color: rgb(58, 58, 58);
-    margin-bottom: 5px;
+    margin:0 0 5px 60px;
 }
 
 #friend_details > h5 {
@@ -327,6 +336,15 @@ input:focus {
 
     #friend_profile {
         text-align: center;
+    }
+
+    #friend_details > #avatar {
+        float: none;
+        margin: 0 0 0 44%;
+    }
+
+    #friend_details > h4 {
+        margin: 0 0 5px 0;
     }
 
     .friend_options_btn {

@@ -12,11 +12,15 @@
         <div id="user_profile" *ngIf="friend">
           <h2>User Profile</h2>
 
+          <img id="avatar" src={{friend.avatar}} alt="avatar">
           <h1>{{ friend.username }}</h1>
           <div id="logged_icon"></div>
           <button id="add_friend_btn" *ngIf="isUserLoggedIn && !friendAdded" (click)="addToFriendsList()">Add Friend</button>
 
           <h3>Junior Member</h3>
+
+          <h4>Join Date: {{ friend.createdAt | date:'mediumDate' }}</h4>
+          <h4>Posts: {{ friend.posts }}</h4>
           <h4>Email: {{ friend.email }}</h4>
           
           <!-- Add Friend (Moved for Mobile) -->

@@ -52,6 +52,15 @@
     margin-bottom: 20px;
 }
 
+#user_profile > #avatar {
+    height: 50px;
+    width: 50px;
+    border-radius: 50px;
+    display: block;
+    float: left;
+    margin:5px 10px 0 0;
+}
+
 #user_profile > h1 {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 38px;
@@ -103,11 +112,11 @@
     font-weight: 400;
     letter-spacing: 1px;
     color: rgb(58, 58, 58);
-    margin-bottom: 5px;
+    margin:0 0 5px 0;
 }
 
 #user_profile > h5 {
-    margin-top: 10px;
+    margin: 10px 0 0 0;
 }
 
 #page_top {
@@ -214,6 +223,11 @@
 
     #user_profile {
         text-align: center;
+    }
+
+    #user_profile > #avatar {
+        float: none;
+        margin: 0 0 0 44%;
     }
 
     #add_friend_btn {

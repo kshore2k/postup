@@ -12,6 +12,7 @@ import * as $ from 'jquery';
 export class ProfileComponent implements OnInit {
   isUserLoggedIn: boolean;
   user: any;
+  profile: any;
   image_set: Boolean = false;
   image_url: any;
   avatar_set: Boolean = false;
@@ -29,6 +30,7 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit() {
     this.runJquery();
+    this.getProfile();
     // this.getAuth();
   }
 
@@ -49,6 +51,15 @@ export class ProfileComponent implements OnInit {
   //     this.user = data;
   //   })
   // }
+
+  // GET USER PROFILE FROM SERVICE
+  getProfile(){
+    let observable = this._httpService.getOneUser(this.user._id);
+    observable.subscribe(data => {
+      console.log("Getting User Profile",data);
+      this.profile = data;
+    })
+  }
 
   // POPUP + SEND EDIT PASSWORD EMAIL
   editPasswordRequest(id){
@@ -80,6 +91,7 @@ export class ProfileComponent implements OnInit {
       observable.subscribe(data => {
         console.log(data);
         this.avatar_set = true;
+        this.getProfile(); // Fetches Profile Again for Real-Time Avatar Update
       })
     })
   }

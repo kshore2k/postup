@@ -69,7 +69,7 @@
     border-radius: 50px;
     display: block;
     float: left;
-    margin-right: 10px;
+    margin:5px 10px 0 0;
 }
 
 #user_profile > h1 {
@@ -127,7 +127,7 @@
     font-weight: 400;
     letter-spacing: 1px;
     color: rgb(58, 58, 58);
-    margin:0 0 5px 60px;
+    margin:0 0 5px 0px;
 }
 
 #user_profile > #choose_file_btn, #upload_btn {
@@ -139,12 +139,12 @@
     color: white;
     cursor: pointer;
     cursor: hand;
-    margin: 5px 5px 5px 60px;
+    margin: 5px 5px 5px 0px;
 }
 
-#user_profile > #upload_btn {
+/* #user_profile > #upload_btn {
     margin-left: 0;
-}
+} */
 
 #user_profile > #avatar_confirm {
     color: #79ca07;
@@ -263,16 +263,19 @@
         text-align: center;
     }
 
+    #user_profile > #avatar {
+        float: none;
+        margin: 0 0 0 44%;
+    }
+
     #pass_reset_btn {
         display: none;
     }
 
     #mbl_pass_reset_btn {
-        display: initial
-    }
-
-    #mbl_pass_reset_btn {
-        margin: 4px 0 0px 0;
+        display: initial;
+        display: block;
+        margin: 4px 0 0px 33%;
     }
 
     #page_top {
