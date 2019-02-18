@@ -10,7 +10,6 @@ import * as $ from 'jquery';
   styleUrls: ['./friends.component.css']
 })
 export class FriendsComponent implements OnInit {
-  // userId: any;
   isUserLoggedIn: boolean;
   user: any;
   friends: any;
@@ -33,23 +32,10 @@ export class FriendsComponent implements OnInit {
     this.getFriendsFromService();
     this.newMessage = {content: ""};
     this._chatService.messages.subscribe(msg => { // Socket Test Console log Message
-      // console.log(msg.text);
       this.chatLog.push(JSON.parse(msg.text));
       $('.chatbox').animate({scrollTop: $('.chatbox').get(0).scrollHeight}, 2000); // Auto Scroll .chatbox Div On New Message
     })
-    // this.getAuth();
   }
-
-  // getAuth(){
-  //   let observable = this._httpService.authenticate();
-  //   observable.subscribe(data => {
-  //     console.log("Getting Authentication", data);
-  //     if(data['msg']==="True"){
-  //       this.userId = data['user_id'];
-  //       this.getFriendsFromService();
-  //     }
-  //   })
-  // }
 
   getFriendsFromService(){
     if(this.isUserLoggedIn){
@@ -61,7 +47,6 @@ export class FriendsComponent implements OnInit {
         }
       })
     }
-    
   }
 
   removeFromFriendsList(friendId){
@@ -106,7 +91,6 @@ export class FriendsComponent implements OnInit {
               $(this).attr('src', imageSrc)
           }
       );
-  
     })
   }
 

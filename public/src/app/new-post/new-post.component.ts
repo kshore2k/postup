@@ -12,7 +12,6 @@ import * as $ from 'jquery';
 export class NewPostComponent implements OnInit {
   newPost: any;
   newPost_id: any;
-  // username: any;
   isUserLoggedIn: boolean;
   user: any;
 
@@ -26,20 +25,9 @@ export class NewPostComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.getAuth();
     this.runJquery();
     this.newPost = {title: "", content: ""};
   }
-
-  // getAuth(){
-  //   let observable = this._httpService.authenticate();
-  //   observable.subscribe(data => {
-  //     console.log("Getting Authentication", data);
-  //     if(data['msg']==="True"){
-  //       this.username = data['username'];
-  //     }
-  //   })
-  // }
 
   addPost(){
     let observable = this._httpService.createPost(this.newPost);
@@ -69,7 +57,6 @@ export class NewPostComponent implements OnInit {
               $(this).attr('src', imageSrc)
           }
       );
-  
     })
   }
 

@@ -53,7 +53,6 @@ export class NewsComponent implements OnInit {
         $('.active').removeClass('active');
         $(this).addClass('active');
       });
-
     })
   }
 

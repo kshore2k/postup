@@ -131,14 +131,4 @@ export class OnePostComponent implements OnInit {
     })
   }
 
-  // getAuth(){
-  //   let observable = this._httpService.authenticate();
-  //   observable.subscribe(data => {
-  //     console.log("Getting Authentication", data);
-  //     if(data['msg']==="True"){
-  //       this.username = data['username'];
-  //     }
-  //   })
-  // }
-
 }

@@ -1,6 +1,7 @@
 * {
     margin: 0 auto;
     padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .main_container {
@@ -27,7 +28,6 @@
 }
 
 .username {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 14px;
     letter-spacing: 1px;
     color: rgb(31, 31, 31);
@@ -45,7 +45,6 @@
 }
 
 .post_header > h1 {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 14px;
     letter-spacing: 1px;
     color: rgb(31, 31, 31);
@@ -77,7 +76,6 @@
 }
 
 #post_subheader > h1 {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 14px;
     font-weight: 400;
     letter-spacing: 1px;
@@ -111,7 +109,6 @@
 }
 
 .post_details > h1, .post_content > h1 {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 16px;
     font-weight: 600;
     letter-spacing: 1px;
@@ -123,7 +120,6 @@
 }
 
 .post_details > h2, .post_details > h3, .post_content > p, .post_content > h3 {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 14px;
     font-weight: 400;
     letter-spacing: 1px;
@@ -239,7 +235,6 @@
 }
 
 #page_top > p {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 12px;
     font-weight: 400;
     letter-spacing: 1px;
@@ -264,7 +259,6 @@
 }
 
 .main_footer > p, .technologies > h1 {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 12px;
     font-weight: 400;
     letter-spacing: 1px;

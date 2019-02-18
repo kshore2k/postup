@@ -41,7 +41,7 @@ export class LoginRegisterComponent implements OnInit {
     })
   }
 
-  // VALIDATIONS NEEDS WORK ***
+  // VALIDATIONS
   registerUser(){
     let observable = this._httpService.createUser(this.newUser);
     observable.subscribe(data => {
@@ -89,7 +89,6 @@ export class LoginRegisterComponent implements OnInit {
         $('#registration_wrap').css('display', 'none')
         $('.register').val('')
       })
-  
     })
   }
 

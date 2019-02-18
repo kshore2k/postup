@@ -1,6 +1,7 @@
 * {
     margin: 0 auto;
     padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .main_container {
@@ -54,11 +55,10 @@
 }
 
 #author_date {
-    width: 320px;
+    width: 600px;
     height: 40px;
     /* background-color: coral; */
     float: right;
-    margin-right: 25%;
 }
 
 #author_date > h2 {
@@ -68,7 +68,7 @@
     letter-spacing: 1px;
     color: rgb(31, 31, 31);
     float: left;
-    margin: 12px 30px 0 60px;
+    margin: 12px 35px 0 60px;
 }
 
 .post_row {
@@ -88,53 +88,62 @@
 #topic > a {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 14px;
-    font-weight: 400;
+    font-weight: bold;
     letter-spacing: 1px;
-    color: rgb(58, 58, 58);
+    color: #1a6a9f;
     text-decoration: none;
     float: left;
     margin: 30px 0 0 40px;
 }
 
 #topic > a:hover {
-    color: rgb(110, 153, 233);
+    text-decoration: underline;
 }
 
-#author, #date {
-    width: 160px;
+#post_details {
+    width: 600px;
     height: 100%;
     /* background-color: cornflowerblue; */
     float: right;
-}
-
-#date {
-    margin-right: 24%
+    text-align: center;
 }
 
 #author > a {
+    margin: 28px 35px 0 60px;
+    display: inline-block;
+    text-align: left;
+}
+
+#comments > a {
+    margin: 28px 35px 0 0px;
+    display: inline-block;
+}
+
+#last > a {
+    margin: 0 0 0 50px;
+}
+
+#last > #commentor {
+    color: #3282bb;
+}
+
+#author > a, #comments > a, #last > a {
+    width: 100px;
+    height: 100%;
+    /* background-color: burlywood; */
+}
+
+#author > a, #comments > a, #last > a {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 13px;
     font-weight: 400;
     letter-spacing: 1px;
     color: rgb(58, 58, 58);
     text-decoration: none;
-    float: left;
-    margin: 30px 0 0 50px;
 }
 
-#author > a:hover {
-    color: rgb(110, 153, 233);
-}
-
-#date > a {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 13px;
-    font-weight: 400;
-    letter-spacing: 1px;
-    color: rgb(58, 58, 58);
-    text-decoration: none;
-    float: left;
-    margin: 30px 0 0 30px;
+#author > a {
+    color: #3282bb;
 }
 
 #page_top {
@@ -254,14 +263,13 @@
 
     #topic {
         width: 100%;
-        /* float: none !important; */
     }
 
     #author_date {
         display: none;
     }
 
-    #date, #author {
+    #comments, #author, #last {
         display: none;
     }
 

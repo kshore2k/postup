@@ -1,6 +1,7 @@
 * {
     margin: 0 auto;
     padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .main_container {
@@ -33,7 +34,6 @@
 }
 
 #web_title, #mbl_title {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 16px;
     letter-spacing: 1px;
     color: rgb(31, 31, 31);
@@ -58,7 +58,6 @@
 }
 
 #news_subheader > p {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 14px;
     font-weight: 600;
     letter-spacing: 1px;
@@ -87,9 +86,8 @@
 }
 
 .news_row > a, #api_link {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 14px;
-    font-weight: 400;
+    font-weight: bold;
     letter-spacing: 1px;
     color: rgb(58, 58, 58);
     text-decoration: none;
@@ -98,7 +96,7 @@
 }
 
 .news_row > a:hover {
-    color: rgb(110, 153, 233);
+    color: #3282bb;
 }
 
 #api_link {
@@ -116,7 +114,6 @@
 }
 
 #page_top > p {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 12px;
     font-weight: 400;
     letter-spacing: 1px;
@@ -141,7 +138,6 @@
 }
 
 .main_footer > p, .technologies > h1 {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 12px;
     font-weight: 400;
     letter-spacing: 1px;

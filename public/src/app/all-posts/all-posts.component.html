@@ -16,18 +16,27 @@
       <h1>Topic</h1>
       <div id="author_date">
         <h2>Author</h2>
-        <h2>Date</h2>
+        <h2>Comments</h2>
+        <h2>Last Comment</h2>
       </div>
     </div>
 
     <table class="post_row" *ngFor="let post of posts">
       <tr>
         <td id="topic"><a [routerLink]="['/post', post._id ]">{{ post.title }}</a></td>
-        <td id="date"><a>{{ post.createdAt | date:'short' }}</a></td>
-        <td id="author">
-          <a *ngIf="user._id != post.user_id" [routerLink]="['/friends/',post.user_id]">{{ post.username }}</a>
-          <a *ngIf="user._id == post.user_id" [routerLink]="['/profile']">{{ post.username }}</a>
-        </td>
+        
+        <div id="post_details">
+          <td id="author">
+            <a *ngIf="user._id != post.user_id" [routerLink]="['/friends/',post.user_id]">{{ post.username }}</a>
+            <a *ngIf="user._id == post.user_id" [routerLink]="['/profile']">{{ post.username }}</a>
+          </td>
+          <td id="comments"><a>{{ post.comments.length }}</a></td>
+          <td *ngIf="post.comments.length > 0" id="last">
+            <a *ngIf="user._id != post.comments[post.comments.length-1].user_id" [routerLink]="['/friends/',post.comments[post.comments.length-1].user_id]" id="commentor">{{ post.comments[post.comments.length-1].username }}</a>
+            <a *ngIf="user._id == post.comments[post.comments.length-1].user_id" [routerLink]="['/profile']" id="commentor">{{ post.comments[post.comments.length-1].username }}</a>
+            <br><a>{{ post.comments[post.comments.length-1].createdAt | date:'short' }}</a>
+          </td>
+        </div>
       </tr>
     </table>
 

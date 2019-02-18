@@ -23,10 +23,12 @@
             <h1>{{ friend.username }}</h1>
             <div id="logged_icon"></div>
 
-            <button class="friend_options_btn" (click)="startChat()">Chat</button>
-            <button class="friend_options_btn" [routerLink]="['/friends/',friend._id]">View Profile</button>
-            <button class="friend_options_btn" (click)="removeFromFriendsList(friend._id)">Remove Friend</button>
-
+            <div id="friend_options">
+              <button class="friend_options_btn" (click)="startChat()">Chat</button>
+              <button class="friend_options_btn" [routerLink]="['/friends/',friend._id]">View Profile</button>
+              <button class="friend_options_btn" (click)="removeFromFriendsList(friend._id)">Remove Friend</button>
+            </div>
+            
             <h3>Junior Member</h3>
             <h4>Email: {{ friend.email }}</h4>
 
@@ -79,9 +81,8 @@
       <form (submit)="sendMessage()">
         <input id="chat_input" type="text" placeholder=" Type a message..." name="newMessage.content" autocomplete="off" [(ngModel)]="newMessage.content">
         
-        <!-- Chat Send Button (for Mobile) -->
+        <!-- CHAT SEND BUTTON (MOBILE) -->
         <input class="chat_btn" type="submit" value="Send">
-        <!-- <button class="chat_btn" (click)="endChat()">End Chat</button> -->
       </form>
     </div>
   </div>

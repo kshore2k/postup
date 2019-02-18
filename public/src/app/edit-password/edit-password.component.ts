@@ -11,6 +11,7 @@ import * as $ from 'jquery';
 export class EditPasswordComponent implements OnInit {
   editProfile: any;
   userId: any;
+  canEdit: Boolean = false;
   confirmation: any;
 
   constructor(private _httpService: HttpService, private _route: ActivatedRoute, private _router: Router) { }
@@ -18,10 +19,26 @@ export class EditPasswordComponent implements OnInit {
   ngOnInit() {
     this.runJquery();
     this.editProfile = {new_password: ""};
-    this._route.params.subscribe(params => this.userId = params.id)
+    this._route.params.subscribe(params => {
+      this.getAuth(params.id);
+    })
   }
 
-  // POSSIBLY CHECK IF USER EXISTS / AUTHENTICATION? ****
+  // CHECK SESSION 
+  getAuth(id){
+    let observable = this._httpService.authenticate();
+    observable.subscribe(data => {
+      console.log(data)
+      if(data['msg'] == "True" && data['user_id'] == id){
+          this.canEdit = true;
+          this.userId = id;
+      }
+      else {
+        this._router.navigate(['/dashboard']);
+      }
+    })
+  }
+
   setNewPassword(){
     let observable = this._httpService.changePassword(this.userId,this.editProfile);
     observable.subscribe(data => {

@@ -10,9 +10,7 @@ import * as $ from 'jquery';
   styleUrls: ['./friends-profile.component.css']
 })
 export class FriendsProfileComponent implements OnInit {
-  // friendId: any;
   friend: any;
-  // userId: any;
   isUserLoggedIn: boolean;
   user: any;
   friendAdded: Boolean;
@@ -31,10 +29,7 @@ export class FriendsProfileComponent implements OnInit {
   ngOnInit() {
     this.runJquery();
     this._route.params.subscribe(params => {
-      // this.friendId = params.id;
-      // this.getAuth();
       this.getFriendProfileFromService(params.id);
-      // this.isFriended();
     })
   }
 
@@ -56,17 +51,6 @@ export class FriendsProfileComponent implements OnInit {
     })
   }
 
-  // getAuth(){
-  //   let observable = this._httpService.authenticate();
-  //   observable.subscribe(data => {
-  //     console.log("Getting Authentication", data);
-  //     if(data['msg']==="True"){
-  //       this.userId = data['user_id'];
-  //       this.isFriended();
-  //     }
-  //   })
-  // }
-
   // CHECK IF FRIEND IS ALREADY ADDED IF SO DISABLE ADD BUTTON
   isFriended(){
     if(this.isUserLoggedIn){
@@ -78,10 +62,7 @@ export class FriendsProfileComponent implements OnInit {
               this.friendAdded = true;
               this.msg = "Is Your Friend!"
             }
-        }
-          // else {
-          //   this.friendAdded = false;
-          // }
+          }
         }
       })
     }
@@ -106,7 +87,6 @@ export class FriendsProfileComponent implements OnInit {
               $(this).attr('src', imageSrc)
           }
       );
-  
     })
   }
 }

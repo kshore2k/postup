@@ -31,26 +31,7 @@ export class ProfileComponent implements OnInit {
   ngOnInit() {
     this.runJquery();
     this.getProfile();
-    // this.getAuth();
   }
-
-  // getAuth(){
-  //   let observable = this._httpService.authenticate();
-  //   observable.subscribe(data => {
-  //     console.log("Getting Authentication", data);
-  //     if(data['msg']==="True"){
-  //       this.getProfile(data['user_id']);
-  //     }
-  //   })
-  // }
-
-  // getProfile(id){
-  //   let observable = this._httpService.getOneUser(id);
-  //   observable.subscribe(data => {
-  //     console.log("Profile Fetched", data);
-  //     this.user = data;
-  //   })
-  // }
 
   // GET USER PROFILE FROM SERVICE
   getProfile(){
@@ -115,7 +96,6 @@ export class ProfileComponent implements OnInit {
               $(this).attr('src', imageSrc)
           }
       );
-  
     })
   }
 

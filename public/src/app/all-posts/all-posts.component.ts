@@ -21,7 +21,6 @@ export class AllPostsComponent implements OnInit {
   ngOnInit() {
     this.runJquery();
     this.allPostsFromService();
-    // this.getAuth();
   }
 
   allPostsFromService(){
@@ -51,17 +50,7 @@ export class AllPostsComponent implements OnInit {
               $(this).attr('src', imageSrc)
           }
       );
-  })
+    })
   }
-
-  // getAuth(){
-  //   let observable = this._httpService.authenticate();
-  //   observable.subscribe(data => {
-  //     console.log("Getting Authentication", data);
-  //     if(data['msg']==="True"){
-  //       this.username = data['username'];
-  //     }
-  //   })
-  // }
 
 }
