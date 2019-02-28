@@ -23,6 +23,7 @@ var UserSchema = new mongoose.Schema({
     email: {type: String, required: [true, "Email Required"]},
     username: {type: String, required: [true, "Username Required"], minlength: [5, "Minimun 5 Characters"]},
     password: {type: String, required: [true, "Password Required"]},
+    level: {type: String, default: "Junior Member", required: false},
     avatar: {type: String, default: "https://pictshare.net/9m4t0r.png", required: false},
     posts: {type: Number, default: 0, required: false}
 }, { timestamps: true })

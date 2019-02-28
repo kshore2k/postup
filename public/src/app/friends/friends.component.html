@@ -8,7 +8,7 @@
 
         <!-- REDIRECT TO LOGIN/REGISTRATION IF NOT LOGGED IN USER -->
         <div id="request_login" *ngIf="!isUserLoggedIn">
-          <h4>Please <a [routerLink]="['/login']">Login</a> or <a [routerLink]="['/login']">Register</a> to view your friends.</h4>
+          <h4>Please <a [routerLink]="['/login']">Login</a> or <a [routerLink]="['/login']">Register</a> to view your Friends.</h4>
         </div>
 
         <p id="break">break</p>
@@ -29,7 +29,7 @@
               <button class="friend_options_btn" (click)="removeFromFriendsList(friend._id)">Remove Friend</button>
             </div>
             
-            <h3>Junior Member</h3>
+            <h3>{{ friend.level }}</h3>
             <h4>Email: {{ friend.email }}</h4>
 
             <button class="mbl_friend_options_btn" (click)="startChat()">Chat</button>

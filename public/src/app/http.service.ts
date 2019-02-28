@@ -28,6 +28,11 @@ export class HttpService {
   deletePost(id){
     return this._http.delete('/api/posts/'+id);
   }
+
+  deleteComment(postId,commentId){
+    return this._http.patch('/api/posts/'+postId+'/comment/'+commentId, null)
+  }
+
   // AUTHENTICATION
   login(login_user){
     return this._http.post('/api/login', login_user);

@@ -1,3 +1,4 @@
+<!-- REGISTRATION MODAL -->
 <div id="registration_wrap">
 
   <p id="web_cancel">x</p>
@@ -12,11 +13,11 @@
 
     <form *ngIf="!confirmation" (submit)="registerUser()">
       
-      <input type="text" name="newUser.first_name" placeholder="*First Name" [(ngModel)]="newUser.first_name" class="register">
-      <input type="text" name="newUser.last_name" placeholder="*Last Name" [(ngModel)]="newUser.last_name" class="register">
-      <input type="email" name="newUser.email" placeholder="*Email" [(ngModel)]="newUser.email" class="register">
-      <input type="text" name="newUser.username" placeholder="*Username" [(ngModel)]="newUser.username" class="register">
-      <input type="password" name="newUser.password" placeholder="*Password" [(ngModel)]="newUser.password" class="register">
+      <input type="text" name="newUser.first_name" placeholder="*First Name" [(ngModel)]="newUser.first_name" class="register" autocomplete="off">
+      <input type="text" name="newUser.last_name" placeholder="*Last Name" [(ngModel)]="newUser.last_name" class="register" autocomplete="off">
+      <input type="email" name="newUser.email" placeholder="*Email" [(ngModel)]="newUser.email" class="register" autocomplete="off">
+      <input type="text" name="newUser.username" placeholder="*Username" [(ngModel)]="newUser.username" class="register" autocomplete="off">
+      <input type="password" name="newUser.password" placeholder="*Password" [(ngModel)]="newUser.password" class="register" autocomplete="off">
 
       <button type="button" id="mbl_cancel">Cancel</button>
       <button id="register_btn">Register</button>
@@ -44,8 +45,8 @@
 
         <form (submit)="checkLogin()">
           
-          <input type="email" name="loginUser.email" placeholder="Email" [(ngModel)]="loginUser.email" id="email">
-          <input type="password" name="loginUser.password" placeholder="Password" [(ngModel)]="loginUser.password" id="password">
+          <input type="email" name="loginUser.email" placeholder="Email" [(ngModel)]="loginUser.email" id="email" autocomplete="off">
+          <input type="password" name="loginUser.password" placeholder="Password" [(ngModel)]="loginUser.password" id="password" autocomplete="off">
 
           <button>Login</button>
         </form>

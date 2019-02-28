@@ -265,6 +265,10 @@
         width: 100%;
     }
 
+    #topic > a {
+        margin: 20px 20px 20px 20px;
+    }
+
     #author_date {
         display: none;
     }

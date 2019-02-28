@@ -8,7 +8,7 @@
 
           <!-- REDIRECT TO LOGIN/REGISTRATION IF NOT LOGGED IN USER -->
           <div id="request_login" *ngIf="!isUserLoggedIn">
-            <h4>Please <a [routerLink]="['/login']">Login</a> or <a [routerLink]="['/login']">Register</a> to view your profile.</h4>
+            <h4>Please <a [routerLink]="['/login']">Login</a> or <a [routerLink]="['/login']">Register</a> to view your Profile.</h4>
           </div>
 
           <p id="break">break</p>
@@ -24,7 +24,7 @@
             <!-- Sends Password Change Request Email -->
             <button id="pass_reset_btn" (click)="editPasswordRequest(user._id)">Edit Password</button>
 
-            <h3>Junior Member</h3>
+            <h3>{{ user.level }}</h3>
             <h4>Join Date: {{ user.createdAt | date:'mediumDate' }}</h4>
             <h4>Posts: {{ user.posts }}</h4>
             <h4>Full Name: {{ user.first_name }} {{ user.last_name }}</h4>

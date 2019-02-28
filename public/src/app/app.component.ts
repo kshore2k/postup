@@ -13,7 +13,9 @@ import * as $ from 'jquery';
 export class AppComponent implements OnInit{
   isUserLoggedIn: boolean;
   user: any;
-  
+
+  guestUser: Object = {email: "postupguest@gmail.com", password: ""}; // **For Demonstration Only
+
   constructor(private _httpService: HttpService, private _dataSharingService: DataSharingService, private _router: Router, private _chatService: ChatService){
     this._dataSharingService.isUserLoggedIn.subscribe( value => { // Subscribe to Login Boolean in DataSharingService
       this.isUserLoggedIn = value;
@@ -27,13 +29,26 @@ export class AppComponent implements OnInit{
 
   ngOnInit(){
     this.runJquery();
+    if(localStorage.getItem('guest') != 'true'){ // Allows for One Initial Guest Login
+      this.guestLogin();
+    }
+  }
+
+  // **FOR FUNCTIONALITY DEMONSTRATION ONLY
+  guestLogin(){
+    let observable = this._httpService.login(this.guestUser);
+    observable.subscribe(data => {
+      console.log(data);
+      this._dataSharingService.loggedInUser.next(data['info']); // Sets User info in DataSharingService to Current User
+      this._dataSharingService.isUserLoggedIn.next(true); // Sets Login Boolean in DataSharingService to true
+      localStorage.setItem('guest', 'true');
+    })
   }
 
   logoutUser(){
     let observable = this._httpService.logout();
     observable.subscribe(data => {
       console.log("Logged Out User");
-      this._router.navigate(['/dashboard']);
     })
   }
 

@@ -31,13 +31,13 @@
         </div>
     </a>
 
-    <a class="nav_login" *ngIf="!isUserLoggedIn" [routerLink]="['/login']">
+    <a class="nav_login" *ngIf="!isUserLoggedIn || user.username == 'Guest'" [routerLink]="['/login']">
         <div id="login" class="nav_btn">
             <img id="login_icon" src="/assets/img/user_icon_dark.png" alt="user">
             <p class="log">Login/Register</p>
         </div>
     </a>
-    <a class="nav_logout" *ngIf="isUserLoggedIn" href="" (click)="logoutUser()">
+    <a class="nav_logout" *ngIf="isUserLoggedIn && user.username != 'Guest'" href="" (click)="logoutUser()">
         <div class="nav_btn">
             <img id="login_icon" src="/assets/img/user_icon_dark.png" alt="user">
             <p class="log">Logout</p>

@@ -25,7 +25,7 @@
         <img *ngIf="poster" src={{poster.avatar}} alt="avatar" id="avatar">
         <h1 *ngIf="user._id != post.user_id" [routerLink]="['/friends/',post.user_id]">{{ post.username }}</h1>
         <h1 *ngIf="user._id == post.user_id" [routerLink]="['/profile']">{{ post.username }}</h1>
-        <h2>Junior Member</h2>
+        <h2 *ngIf="poster">{{ poster.level }}</h2>
         <h3 *ngIf="poster">Join Date: {{ poster.createdAt | date:'mediumDate' }}</h3>
         <h3 *ngIf="poster">Posts: {{ poster.posts }}</h3>
       </div>
@@ -35,8 +35,8 @@
         <h3>{{ post.content }}</h3>
         <div id="post_end"></div>
 
-        <!-- If Logged In User Created Post Allow For Delete -->
-        <button (click)="deletePostFromService(post._id)" *ngIf="post.username === user.username ">Delete</button>
+        <!-- Allow Post Creator & Admin to Delete Post -->
+        <button (click)="deletePostFromService(post._id)" *ngIf="post.username === user.username || isAdmin === true">Delete</button>
       </div>
     </div>
 
@@ -47,7 +47,7 @@
         <img *ngIf="commentors[i]" src={{commentors[i].user.avatar}} alt="avatar" id="avatar">
         <h1 *ngIf="user._id != comments.user_id" [routerLink]="['/friends/',comments.user_id]">{{ comments.username }}</h1>
         <h1 *ngIf="user._id == comments.user_id" [routerLink]="['/profile']">{{ comments.username }}</h1>
-        <h2>Junior Member</h2>
+        <h2 *ngIf="commentors[i]">{{ commentors[i].user.level }}</h2>
         <h3 *ngIf="commentors[i]">Join Date: {{ commentors[i].user.createdAt | date:'mediumDate' }}</h3>
         <h3 *ngIf="commentors[i]">Posts: {{ commentors[i].user.posts }}</h3>
       </div>
@@ -55,6 +55,9 @@
         <p>{{ comments.createdAt | date:'short' }}</p>
         <h3>{{ comments.comment }}</h3>
         <div id="post_end"></div>
+
+        <!-- Allow Comment Creator & Admin to Delete Comment -->
+        <button (click)="deleteCommentFromService(comments._id)" *ngIf="comments.username === user.username || isAdmin === true">Delete</button>
       </div>
     </div>
     </div>

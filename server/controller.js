@@ -51,7 +51,7 @@ module.exports = {
     addUser: (req,res) => {
         bcrypt.hash(req.body.password, 10)
             .then(hashed_password => {
-                User.create({first_name: req.body.first_name, last_name: req.body.last_name, email: req.body.email, username: req.body.username, password: hashed_password})
+                User.create({first_name: req.body.first_name, last_name: req.body.last_name, email: req.body.email, username: req.body.username, password: hashed_password, level: req.body.level})
                     .then((data) => {
                         req.session.user_id = data._id; // save user in session
                         req.session.username = data.username;

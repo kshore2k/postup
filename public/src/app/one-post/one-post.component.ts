@@ -17,6 +17,7 @@ export class OnePostComponent implements OnInit {
   commentors = [];
   isUserLoggedIn: boolean;
   user: any;
+  isAdmin: boolean = false;
 
   constructor(private _httpService: HttpService, private _route: ActivatedRoute, private _router: Router, private _dataSharingService: DataSharingService) {
     this._dataSharingService.isUserLoggedIn.subscribe( value => { // Subscribe to Login Boolean in DataSharingService
@@ -25,13 +26,15 @@ export class OnePostComponent implements OnInit {
     
     this._dataSharingService.loggedInUser.subscribe( value => {  // Subscribe to User Data Saved in DataSharingService
       this.user = value;
+      if(this.user.level === 'Senior Admin'){
+        this.isAdmin = true; // Gives Admin Control of Post if Senior level
+      }
     })
    }
 
   ngOnInit() {
     this.runJquery();
     this.onePostFromService();
-    // this.getAuth();
     this.newComment = {comment: ""};
   }
 
@@ -84,7 +87,14 @@ export class OnePostComponent implements OnInit {
     observable.subscribe(data => {
       console.log("Deleted One Post", data);
       this._router.navigate(['/dashboard']);
+    })
+  }
 
+  deleteCommentFromService(commentId){
+    let observable = this._httpService.deleteComment(this.post_id,commentId);
+    observable.subscribe(data => {
+      console.log("Deleted One Comment", data);
+      this.onePostFromService();
     })
   }
 
