@@ -14,7 +14,7 @@ export class AppComponent implements OnInit{
   isUserLoggedIn: boolean;
   user: any;
 
-  guestUser: Object = {email: "postupguest@gmail.com", password: ""}; // **For Demonstration Only
+  guestUser: Object = {email: "postupguest@gmail.com", password: "12345678"}; // **For Demonstration Only
 
   constructor(private _httpService: HttpService, private _dataSharingService: DataSharingService, private _router: Router, private _chatService: ChatService){
     this._dataSharingService.isUserLoggedIn.subscribe( value => { // Subscribe to Login Boolean in DataSharingService
