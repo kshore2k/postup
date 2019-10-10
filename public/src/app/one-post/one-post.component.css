@@ -140,6 +140,7 @@
 .post_content > h1 {
     font-weight: 600;
     color: rgb(31, 31, 31);
+    cursor: default;
 }
 
 .post_content > p {
